@@ -33,14 +33,14 @@ class TaskDetailWidget extends StatelessWidget {
           return Center(
             child: CircularProgressIndicator(),
           );
-        // if (state is TaskError)
+         if (state is TaskError)
         return ErrorWidgetScreen(
           callBack: () {
             sl<TaskBloc>().add(GetTaskByIDEvent(
                 params: GetTaskByIDParams(
                     body: GetTaskByIDParamsBody(id: id ?? 0))));
           },
-          message: "state.message",
+          message: state.message,
           height: 250.h,
           width: 250.w,
         );
