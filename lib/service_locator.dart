@@ -8,6 +8,10 @@ import 'package:todoapp/core/utils/hive_paramter.dart';
 
 
 import 'core/utils/network_info.dart';
+import 'features/commet/data/data_sources/remote/remote_data_source.dart';
+import 'features/commet/data/repositories/default_comment_repository.dart';
+import 'features/commet/domain/repositories/comment_repository.dart';
+import 'features/commet/presentation/bloc/comment_bloc.dart';
 import 'features/home/data/data_sources/remote/remote_data_source.dart';
 import 'features/home/data/repositories/default_story_repository.dart';
 import 'features/home/domain/repositories/story_repository.dart';
@@ -31,18 +35,22 @@ Future<void> init() async {
 
   sl.registerFactory(() => HiveParamter(path: directory.path, hive: sl()));
    sl.registerLazySingleton(() => StoryBloc());
+  sl.registerLazySingleton(() => CommentBloc());
 
   sl.registerLazySingleton(() => NetworkInfo());
   sl.registerLazySingleton(() => AppStateModel());
 
   // Data sources
-
+  sl.registerLazySingleton(() =>CommentRemoteDataSource(
+    sl(),
+  ));
       sl.registerLazySingleton(() => StoryRemoteDataSource(
         sl(),
       ));
 
   // Repositories
    sl.registerLazySingleton<StoryRepository>(() => DefaultStoryRepository(sl()));
+  sl.registerLazySingleton<CommentRepository>(() => DefaultCommentRepository(sl()));
 
 
 

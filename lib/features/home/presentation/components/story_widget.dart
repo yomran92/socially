@@ -6,11 +6,8 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:todoapp/core/assets_path.dart';
 import 'package:todoapp/core/styles.dart';
-import 'package:todoapp/core/utils.dart';
 import 'package:todoapp/core/widget/custom_svg_picture.dart';
-import 'package:todoapp/core/widget/custom_text.dart';
 import 'package:todoapp/features/home/presentation/screens/story_view_widget.dart';
-import 'package:todoapp/features/task/data/models/param/delete_task_param.dart';
 
 import '../../../../core/constants.dart';
 import '../../../../core/routing/route_paths.dart';
@@ -23,8 +20,6 @@ import '../../../../core/utils/network_info.dart';
 import '../../../../core/widget/empty_state_widget.dart';
 import '../../../../core/widget/error_widget.dart';
 import '../../../../service_locator.dart';
-import '../../../task/data/models/param/get_all_task_param.dart';
-import '../../../task/domain/entities/get_task_entity.dart';
 import '../../data/models/param/get_all_story_param.dart';
 import '../bloc/story/story_bloc.dart';
 

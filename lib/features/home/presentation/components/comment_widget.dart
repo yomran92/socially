@@ -24,7 +24,6 @@ import '../../../../service_locator.dart';
 import '../../../commet/data/models/param/add_new_comment_param.dart';
 import '../../../commet/data/models/param/get_all_comment_param.dart';
 import '../../../commet/presentation/bloc/comment_bloc.dart';
-import '../../../task/presentation/bloc/task_bloc.dart';
 
 
 class CommentBottomSheet extends StatefulWidget {
@@ -63,7 +62,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
   bool _enablePullUp = true;
   int _currentSection = 1;
   final _refreshController = RefreshController();
-  late GetAllTaskLoadedState currentState;
+  late GetAllCommentLoadedState currentState;
 
   @override
   void dispose() {
@@ -282,23 +281,23 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                                             )),
 
 
-                              BlocConsumer<TaskBloc, TaskState>(
-                              bloc: sl<TaskBloc>(),
-                              listener: (context, TaskState state) {
-                              if (state is AddNewTaskState) {
+                              BlocConsumer<CommentBloc, CommentState>(
+                              bloc: sl<CommentBloc>(),
+                              listener: (context, CommentState state) {
+                              if (state is AddNewCommentState) {
                               Navigator.pop<bool>(context, true);
-                              } else if (state is TaskError) {
+                              } else if (state is CommentError) {
                               HelperFunction.showToast(state.message);
 
                               Navigator.pop<bool>(context, false);
                               }
                               },
                               builder: (context, state) {
-                              if (state is TaskLoading)
+                              if (state is CommentLoading)
                               return Center(
                               child: CircularProgressIndicator(),
                               );
-                              if (state is TaskError)
+                              if (state is CommentError)
                               return ErrorWidgetScreen(
                               callBack: () {
                               if (!Validators.isNotEmptyString(_commentController.text)) {
