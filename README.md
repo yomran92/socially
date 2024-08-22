@@ -1,4 +1,4 @@
-# taskapp
+# socially app
 
 ## Getting Started
 
@@ -10,10 +10,8 @@ Task manager app with Login (email and password)
   App Architecture
 - This sample follows BLoC pattern + Clean Architecture.
   Local Storage
-- Persist tasks locally using Flutter's hive
+- Persist post comment story locally using Flutter's hive
+- in this project we used dummyjson 
 
-Testing
-
-- Located at /test - These are tests that run on your machine. 
 
 
