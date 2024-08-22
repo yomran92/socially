@@ -6,7 +6,6 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:todoapp/core/assets_path.dart';
 import 'package:todoapp/core/string_lbl.dart';
 import 'package:todoapp/core/widget/custom_svg_picture.dart';
-import 'package:todoapp/features/task/presentation/screens/tasks_screen.dart';
 
 import '../../../../core/styles.dart';
 import '../../../../core/utils.dart';
