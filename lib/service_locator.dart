@@ -27,6 +27,7 @@ import 'features/home/domain/repositories/story_repository.dart';
 import 'features/home/presentation/bloc/story/story_bloc.dart';
 import 'features/post/data/data_sources/remote/remote_data_source.dart';
 import 'features/post/data/models/get_all_post_model.dart';
+import 'features/post/data/models/get_all_post_model.g.dart';
 import 'features/post/data/models/post_model.dart';
 import 'features/post/data/repositories/default_post_repository.dart';
 import 'features/post/domain/repositories/Post_repository.dart';

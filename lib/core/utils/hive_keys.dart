@@ -4,7 +4,7 @@ class HiveKeys {
 
 //Box
   static const String postBox = "postBox";
-  static const String postListKey = "taskListKey";
+  static const String postListKey = "postListKey";
 
   //Box
   static const String commentBox = "commentBox";

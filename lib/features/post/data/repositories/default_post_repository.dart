@@ -11,7 +11,7 @@ import '../../domain/entities/get_all_Post_entity.dart';
 import '../../domain/repositories/Post_repository.dart';
 import '../data_sources/remote/remote_data_source.dart';
 import '../models/get_all_post_model.dart';
-import '../models/param/get_all_post_param.dart';
+ import '../models/param/get_all_post_param.dart';
 
 class DefaultPostRepository implements PostRepository {
   final PostRemoteDataSource? remoteDataSource;
@@ -38,7 +38,9 @@ class DefaultPostRepository implements PostRepository {
       getAllPostModelLocal.posts!.addAll(getAllPostModel.posts ?? []);
       getAllPostModelLocal.posts!.toSet().toList();
       postBox.put(HiveKeys.postListKey, postData);
-
+      GetAllPostEntity getAllPostEntity =
+      (postBox.get(HiveKeys.postListKey) as GetAllPostModel)
+          .toEntity();
       return Right(postData.toEntity());
     } on AppException catch (e) {
       return Left(ErrorEntity.fromException(e));

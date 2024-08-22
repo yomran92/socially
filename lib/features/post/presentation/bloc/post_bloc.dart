@@ -24,7 +24,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       emit(res.fold(
           (l) => PostError(message: l.errorMessage ?? ''),
           (r) => GetAllPostLoadedState(
-              skip: r.skip, limit: r.limit, post: r.todos, total: r.total)));
+              skip: r.skip, limit: r.limit, post: r.posts, total: r.total)));
     });
   }
 }

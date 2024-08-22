@@ -94,14 +94,17 @@ class _PostListWidgetState extends State<PostListWidget> {
                   0) {
                 sl<NetworkInfo>().connectivityNotifier.value =
                     ConnectivityResult.none;
+
+
+
+
                 final postBox =
                     await sl<HiveParamter>().hive.box(HiveKeys.postBox);
                 GetAllPostEntity getAllPostEntity =
                     (postBox.get(HiveKeys.postListKey) as GetAllPostModel)
                         .toEntity();
-
-                getAllPostLoadedState = GetAllPostLoadedState(
-                    post: getAllPostEntity.todos,
+                 getAllPostLoadedState = GetAllPostLoadedState(
+                    post: getAllPostEntity.posts,
                     limit: getAllPostEntity.limit,
                     total: getAllPostEntity.total,
                     skip: getAllPostEntity.skip);
