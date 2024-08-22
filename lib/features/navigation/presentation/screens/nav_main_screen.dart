@@ -88,15 +88,14 @@ top: false,
                animationSettings: NavBarAnimationSettings(
               screenTransitionAnimation:
               ScreenTransitionAnimationSettings(
-                 animateTabTransition: false,
+                 animateTabTransition: true,
                 curve: Curves.easeOut,
                 duration: Duration(milliseconds: 300),
               )
               ),
 
               items: _navBarsItems(),
-              // bottomScreenMargin: 5,
-              // margin: const EdgeInsets.only(top: 10),
+
               decoration: NavBarDecoration(
                 colorBehindNavBar: Styles.colorBackground ,
                    borderRadius: BorderRadius.only(
@@ -124,17 +123,40 @@ top: false,
     List<Widget> screens = [];
 
        screens.add(HomeScreen());
-       screens.add(Container());
-       screens.add(Container());
+       screens.add(Scaffold(
 
+           resizeToAvoidBottomInset: true,
+           body: Container(
+               decoration: Styles.gradientRoundedDecoration(
+                 radius: 0.r,
+
+                 gradientColor: [Styles.colorBackgroundGradientStart,Styles.colorBackgroundGradientEnd],
+
+               ),
+               width: double.maxFinite,
+               height: double.maxFinite,
+           )));
+    screens.add(Scaffold(
+
+        resizeToAvoidBottomInset: true,
+        body: Container(
+          decoration: Styles.gradientRoundedDecoration(
+            radius: 0.r,
+
+            gradientColor: [Styles.colorBackgroundGradientStart,Styles.colorBackgroundGradientEnd],
+
+          ),
+          width: double.maxFinite,
+          height: double.maxFinite,
+        )));
 
     return screens;
 
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
-    final activeColor = Styles.colorBackgroundNavBar;
-    final inactiveColor = Styles.colorBackgroundNavBar;
+    final activeColor = Styles.colorIconActive;
+    final inactiveColor = Styles.colorIconInActive.withOpacity(0.8) ;
 
     return [
          PersistentBottomNavBarItem(
@@ -143,7 +165,7 @@ top: false,
           icon:CustomPicture(
             path: AssetsPath.SVGNAVBarHome,
             height: 30.r, width: 30.r,
-            color: Styles.colorIconActive,
+            color: activeColor ,
 
             isSVG: true,
 
@@ -151,7 +173,7 @@ top: false,
            inactiveIcon:CustomPicture(
            path: AssetsPath.SVGNAVBarHome,
            height: 30.r, width: 30.r,
-            color: Styles.colorIconActive,
+            color: inactiveColor,
              isSVG: true,
 
          ),
@@ -163,14 +185,14 @@ top: false,
           isSVG: true,
           path: AssetsPath.SVGNAVBarCompass,
           height: 30.r, width: 30.r,
-          color: Styles.colorIconActive,
+          color: activeColor ,
 
 
         ),
         inactiveIcon:CustomPicture(
           path: AssetsPath.SVGNAVBarCompass,
           height: 30.r, width: 30.r,
-          color: Styles.colorIconInActive,
+          color: inactiveColor,
           isSVG: true,
 
         ),
@@ -182,7 +204,7 @@ top: false,
           icon:CustomPicture(
             path: AssetsPath.SVGNAVBarProfile,
             height: 30.r, width: 30.r,
-            color: Styles.colorIconActive,
+            color: activeColor ,
             isSVG: true,
 
 
@@ -190,7 +212,7 @@ top: false,
            inactiveIcon:CustomPicture(
            path: AssetsPath.SVGNAVBarProfile,
            height: 30.r, width: 30.r,
-            color: Styles.colorIconInActive,
+            color: inactiveColor,
              isSVG: true,
 
          ),

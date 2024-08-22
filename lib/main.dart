@@ -22,6 +22,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (BuildContext context, Widget? widget) {
           return MaterialApp(
+            navigatorKey: navigatorKey,
             debugShowCheckedModeBanner: false,
             title: StringLbl.appName,
             initialRoute: RoutePaths.splashPage,

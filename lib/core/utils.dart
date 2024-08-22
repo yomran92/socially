@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class Utils {
   static void pushNavigateTo(context, bool withNavBar, String route,
@@ -22,18 +23,20 @@ class Utils {
     return map;
   }
 
-  static Future<T?> pushNewScreenWithRouteSettings<T>(
-    final BuildContext context, {
-    required final Widget screen,
-    required final RouteSettings settings,
-    bool? withNavBar,
-    final PageRoute<T>? customPageRoute,
-  }) {
-    withNavBar ??= true;
+  // static Future<T?> pushNewScreenWithRouteSettings<T>(
+  //   final BuildContext context, {
+  //   required final Widget screen,
+  //   required final RouteSettings settings,
+  //   bool? withNavBar,
+  //   final PageRoute<T>? customPageRoute,
+  // }) {
+  //   withNavBar ??= true;
+  //
+  //   return Navigator.of(context, rootNavigator: !withNavBar)
+  //       .push<T>(customPageRoute as Route<T>);
+  // }
 
-    return Navigator.of(context, rootNavigator: !withNavBar)
-        .push<T>(customPageRoute as Route<T>);
-  }
+
 
   static void pushReplacementNavigateTo(context, String route, {arguments}) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {

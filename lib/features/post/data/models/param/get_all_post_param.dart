@@ -11,7 +11,7 @@ class GetAllPostParams extends ParamsModel<GetAllPostParamsBody> {
   RequestType? get requestType => RequestType.GET;
 
   @override
-  String? get url => 'todos/user/${sl<AppStateModel>().user!.id}';
+  String? get url => 'posts';
 
   @override
   Map<String, String> get urlParams => {

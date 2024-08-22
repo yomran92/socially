@@ -11,7 +11,7 @@ class GetAllStoryParams extends ParamsModel<GetAllStoryParamsBody> {
   RequestType? get requestType => RequestType.GET;
 
   @override
-  String? get url => 'todos/user/${sl<AppStateModel>().user!.id}';
+  String? get url => 'users';
 
   @override
   Map<String, String> get urlParams => {

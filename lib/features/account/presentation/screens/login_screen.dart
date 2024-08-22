@@ -6,6 +6,7 @@ import 'package:todoapp/core/utils.dart';
 import 'package:todoapp/core/utils/hive_keys.dart';
 import 'package:todoapp/core/widget/custom_text.dart';
 
+import '../../../../core/assets_path.dart';
 import '../../../../core/routing/route_paths.dart';
 import '../../../../core/state/appstate.dart';
 import '../../../../core/string_lbl.dart';
@@ -15,7 +16,9 @@ import '../../../../core/utils/helper_function.dart';
 import '../../../../core/utils/hive_paramter.dart';
 import '../../../../core/validators/validators.dart';
 import '../../../../core/widget/custom_button.dart';
+import '../../../../core/widget/custom_svg_picture.dart';
 import '../../../../core/widget/custom_text_field.dart';
+import '../../../../core/widget/social_app_bar.dart';
 import '../../../../service_locator.dart';
 import '../../data/remote/models/params/login_params.dart';
 import '../blocs/account_bloc.dart';
@@ -52,19 +55,26 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Styles.colorPrimary,
-          title: CustomText(
-            text: StringLbl.login,
-            style: Styles.w700TextStyle()
-                .copyWith(fontSize: 20.sp, color: Styles.colorTextWhite),
+    return
+      SafeArea(
+        top: true,
+
+        child:
+      Scaffold(
+
+         body:
+        SafeArea(
+          child:Container(
+          decoration: Styles.gradientRoundedDecoration(
+            radius: 0.r,
+
+            gradientColor: [Styles.colorBackgroundGradientStart,Styles.colorBackgroundGradientEnd],
+
           ),
-        ),
-        body: SafeArea(
-            child: FormBuilder(
+          width: double.maxFinite,
+          height: double.maxFinite,
+         child:
+         FormBuilder(
           key: _formKey,
           child: Container(
               height: MediaQuery.of(context).size.height,
@@ -74,9 +84,19 @@ class _LogInScreenState extends State<LogInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).padding.top,
+                    SocialAppBar(
+                      withNotification: false,
+                      tail: [Row(children: [
+
+
+                        CustomPicture(path: AssetsPath.SVGSocially,
+
+                            isSVG: true,
+                            height: 23.h, width: 144.w)
+                      ],)],
                     ),
+
+
                     SizedBox(
                       height: 85.h,
                     ),
@@ -90,7 +110,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 ),
               )),
         )),
-      ),
+        )),
     );
   }
 
@@ -121,7 +141,7 @@ class _LogInScreenState extends State<LogInScreen> {
           .copyWith(fontSize: 16.sp, color: Styles.colorTextTextField),
       textAlign: TextAlign.left,
       focusNode: _usernameFocusNode,
-      hintText: StringLbl.userName,
+      hintText:  '',
       minLines: 1,
       onChanged: (String value) {
         if (_usernameKey.currentState!.validate()) {}
@@ -151,7 +171,7 @@ class _LogInScreenState extends State<LogInScreen> {
           .copyWith(fontSize: 16.sp, color: Styles.colorTextTextField),
       textAlign: TextAlign.left,
       focusNode: _passwordFocusNode,
-      hintText: StringLbl.password,
+      hintText:  '',
       minLines: 1,
       onChanged: (String value) {
         if (_passwordKey.currentState!.validate()) {}
@@ -194,11 +214,11 @@ class _LogInScreenState extends State<LogInScreen> {
               text: StringLbl.login,
 
               style: Styles.w600TextStyle()
-                  .copyWith(fontSize: 14.sp, color: Styles.colorTextWhite),
-              raduis: 14.r,
+                  .copyWith(fontSize: 18.sp, color: Styles.colorTextWhite),
+              raduis:25 .r,
               textAlign: TextAlign.center,
               color: Styles.colorPrimary,
-              fillColor: Styles.colorPrimary,
+              fillColor: Styles.colorGradientStart ,
               // width: 350.w,
               height: 52.h,
               alignmentDirectional: AlignmentDirectional.center,

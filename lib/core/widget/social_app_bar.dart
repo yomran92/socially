@@ -70,7 +70,11 @@ class SocialAppBar extends StatelessWidget {
                               height: 25.r,
                               width: 25.r,
                               isSVG: true,
-                             ),
+                             ), if (!withNotification)
+                            SizedBox(
+                               height: 25.r,
+                              width: 25.r,
+                              ),
 
                           if (
                               tail != null &&
@@ -84,7 +88,11 @@ class SocialAppBar extends StatelessWidget {
                               width: 25.r,
 
                             ),
-
+                          if (!withNotification)
+                            SizedBox(
+                              height: 25.r,
+                              width: 25.r,
+                            ),
                         ],
                       ),
                    // ),

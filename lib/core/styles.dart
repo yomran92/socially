@@ -26,7 +26,9 @@ class Styles {
   static Color get colorBackgroundGradientStart => Color(0xFF05101C);
 
   static Color get colorBackgroundGradientEnd => Color(0xFF040f1c);
+  static Color get colorStoryGradientStart => Color(0x4C425973);
 
+  static Color get colorStoryGradientEnd => Color(0x4C172A3E);
   static Color get colorTextInactive => Color(0xFF05101C);
 
 
