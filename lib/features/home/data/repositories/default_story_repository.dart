@@ -1,6 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
-import 'package:todoapp/features/task/data/models/param/delete_task_param.dart';
 
 import '../../../../core/error/app_exceptions.dart';
 import '../../../../core/error/error_entity.dart';

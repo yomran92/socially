@@ -1,20 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todoapp/core/assets_path.dart';
-import 'package:todoapp/core/styles.dart';
+ import 'package:flutter_screenutil/flutter_screenutil.dart';
+ import 'package:todoapp/core/styles.dart';
 import 'package:todoapp/core/widget/custom_button_with_icon.dart';
-import 'package:todoapp/core/widget/custom_svg_picture.dart';
-import 'package:todoapp/core/widget/custom_text.dart';
-import 'package:todoapp/features/task/data/models/param/delete_task_param.dart';
+
 
 import '../../../../core/string_lbl.dart';
 import '../../../../core/validators/validators.dart';
 import '../../../../core/widget/custom_text_field.dart';
-import '../../../../service_locator.dart';
-import '../../../task/domain/entities/get_task_entity.dart';
 
 
 
