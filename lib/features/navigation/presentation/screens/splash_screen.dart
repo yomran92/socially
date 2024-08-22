@@ -75,7 +75,7 @@ class _SplashcreenState extends State<SplashScreen> {
   Future<void> CallApi() async {
     try {
       final userBox = await sl<HiveParamter>().hive.box(HiveKeys.userBox);
-      goToLogin();
+      // goToLogin();
 
       UserModel? userModel = null;
       if (userBox == null) {
@@ -95,7 +95,7 @@ class _SplashcreenState extends State<SplashScreen> {
         Utils.popNavigateToFirst(context);
         Utils.pushReplacementNavigateTo(
           context,
-          RoutePaths.TaskScreen,
+          RoutePaths.NavMainScreen,
         );
       }}
     } catch (e) {

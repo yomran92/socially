@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
   static void pushNavigateTo(context, bool withNavBar, String route,
@@ -10,7 +11,9 @@ class Utils {
       Navigator.of(context).pushNamed(route, arguments: arguments);
     });
   }
-
+  static void showToast(String message) {
+    Fluttertoast.showToast(msg: message);
+  }
   Map<T, List<S>> groupBy<S, T>(Iterable<S> values, T Function(S) key) {
     var map = <T, List<S>>{};
     for (var element in values) {

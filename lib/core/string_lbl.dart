@@ -14,4 +14,5 @@ class StringLbl {
   static String save = 'Save';
   static String add = 'Add';
   static String reload = 'reload';
+  static String pressTwiceToExit = 'Press Twice To Exit';
 }

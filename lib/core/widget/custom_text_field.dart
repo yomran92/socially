@@ -74,14 +74,14 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var border = OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12.r)),
+        borderRadius: BorderRadius.all(Radius.circular(25.r)),
         borderSide: BorderSide(color: Styles.colorBorderTextField));
     var focusborder = OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12.r)),
+        borderRadius: BorderRadius.all(Radius.circular(25.r)),
         borderSide: BorderSide(color: Styles.colorPrimary));
 
     var errorBord = OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12.r)),
+        borderRadius: BorderRadius.all(Radius.circular(25.r)),
         borderSide: BorderSide(color: Colors.red));
     return Container(
         alignment: Alignment.center,
@@ -134,6 +134,7 @@ class CustomTextField extends StatelessWidget {
                       color: Styles.colorTextError,
                     ),
                     fillColor: Styles.colorBackgroundContanier,
+                    filled: true,
                     hintStyle: textStyle,
                     border: inputBorder ?? border,
                     errorBorder: errorBorder ?? errorBord,

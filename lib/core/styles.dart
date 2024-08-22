@@ -5,51 +5,50 @@ class Styles {
   /// App Settings
 
   //Color
-  static Color get colorPrimary => Color(0xFF488B89);
+  static Color get colorPrimary => Color(0xFF05101C);
 
   static Color get colorSecondry => Color(0xFFDD623A);
+  static Color get colorIconActive => Color(0xFF05101C);
+  static Color get colorDivider => Color(0xFF05101C);
+  static Color get colorIconInActive => Color(0xFF363636);
 
-  static Color get colorBackground => Color(0xFFF3F6F6);
+  static Color get colorBackground => Color(0xFF2D2D2D);
 
   static Color get colorBackgroundNavBar => Color(0xFFFFFFFF);
+  static Color get colorShadow => Color(0x0000000);
 
   static Color get colorBackgroundAppBar => Color(0xFFFFFFFF);
 
-  static Color get colorGradientStart => Color(0xFF488B89);
+  static Color get colorGradientStart => Color(0xFF435A73);
 
-  static Color get colorGradientEnd => Color(0xFF7BB5B3);
+  static Color get colorGradientEnd => Color(0xFF182A3E);
+  static Color get colorReplay => Color(0xFFAACFF1);
+  static Color get colorBackgroundGradientStart => Color(0xFF05101C);
 
-  static Color get colorTextInactive => Color(0xFF828282);
+  static Color get colorBackgroundGradientEnd => Color(0xFF040f1c);
 
-  static Color get colorAppBarProfile => Color(0xFFFCF0EC);
+  static Color get colorTextInactive => Color(0xFF05101C);
 
-  static Color get colorCardBackground => Color(0xFFFFFFFF);
 
-  static Color get colorSelectedLanguage => Color(0xFFFFE3DA);
 
-  static Color get colorSelectedTab => Color(0xFFFFE3DA);
 
-  static Color get colorNoImageBackground => Color(0xFFFFE3DA);
 
-  static Color get colorBackArrowIcon => Color(0xFF333333);
 
-  static Color get colorBtnMapBackground => Color(0xFFEDF4F4);
+  static Color get colorBackArrowIcon => Color(0xFF7662B3);
 
-  static Color get colorBackgourndWaitingNotication => Color(0xFFFCF4DB);
 
-  static Color get colorBackgourndReview => Color(0xFFFCF4DB);
 
-  static Color get colorBtnSendBackground => Color(0xFFEDF4F4);
-
-  static Color get colorBtnTrashBackground => Color(0xFFEDF4F4);
-
-  static Color get colorTextTitle => Color(0xFF333333);
+  static Color get colorTextTitle => Color(0xFF363636);
+  static Color get colorStorygradient1 => Color(0xFFFFED001A);
+  static Color get colorStorygradient2 => Color(0xFF00A75D1A);
+  static Color get colorStorygradient3 => Color(0xFF009FE31A);
 
   static Color get colorTextDialogDangerTitle => Color(0xFFF2994A);
 
   static Color get colorTextTextField => Color(0xFF4F4F4F);
 
   static Color get colorBackgroundContanier => Color(0xFFFFFFFF);
+  static Color get colorBackgroundWithIconContanier => Color(0xFFF1F1F1);
 
   static Color get colorBorderTextField => Color(0xFFE0E0E0);
 
@@ -57,39 +56,7 @@ class Styles {
 
   static Color get colorTextError => Color(0xFFEB5757);
 
-  static Color get colorCancelBackground => Color(0xFFF2F2F2);
 
-  static Color get colorReviewInActiveBackground => Color(0xFFF2F2F2);
-
-  static Color get colorTextOngoing => Color(0xFFF2C94C);
-
-  static Color get colorRateStar => Color(0xFFF2C94C);
-
-  static Color get colorTextFinsihed => Color(0xFF27AE60);
-
-  static Color get colorWhatsApp => Color(0xFF29A71A);
-
-  static Color get colorWhatsAppBackground => Color(0xFFDFEFE1);
-
-  static Color get colorNotificationIcon => Color(0xFF292D32);
-
-  static Color get colorTextMissied => Color(0xFFEB5757);
-
-  static Color get colorFavouriteIcon => Color(0xFFEB5757);
-
-  static Color get colorAudioAttachmentBackground => Color(0xFFF2F2F2);
-
-  static Color get colorRecievedAttachmentBackground => Color(0xFFD4EFDF);
-
-  static Color get colorAttachmentBloodTestBackgournd => Color(0xFFFBDDDD);
-
-  static Color get colorInstructionContainerBackgournd => Color(0xFFFBDDDD);
-
-  static Color get colorHelperTextBackgournd => Color(0xFFFFEDDD);
-
-  static Color get colorIconSVGCoin => Color(0xFFBDBDBD);
-
-  static Color get colorIconArrowCheckBoxList => Color(0xFFBDBDBD);
 
   /// font
   static const FontFamily = 'Alexandria';
@@ -116,11 +83,14 @@ class Styles {
 
   static TextStyle get fontW500Style => TextStyle(
         fontFamily: FontFamily,
+    color: colorTextTitle
       );
 
   static TextStyle get fontW300Style => TextStyle(
         fontFamily: FontFamily,
-      );
+      color: colorTextTitle
+
+  );
 
   static StrutStyle get structStyle => StrutStyle(fontFamily: FontFamily);
 
@@ -145,7 +115,8 @@ class Styles {
       overflow: TextOverflow.fade,
       // fontFamily: !isArb ? FontFamilyBoldArb : Styles.FontFamily,
       fontFamily: FontFamilyBoldArb,
-      color: Styles.colorPrimary);
+     color: colorTextTitle
+  );
 
   static TextStyle w400TextStyle() => fontStyle.copyWith(
         fontSize: 16.sp,
@@ -153,58 +124,84 @@ class Styles {
         fontFamily: FontFamilyRegularArb,
         height: 1.2,
         overflow: TextOverflow.fade,
-      );
+      color: colorTextTitle
+
+  );
 
   static TextStyle w300TextStyle() => fontStyle.copyWith(
         fontSize: 10.sp,
         fontWeight: FontWeight.w300,
         height: 1.2,
         overflow: TextOverflow.fade,
-        fontFamily: FontFamilyLightArb,
-      );
+        fontFamily: FontFamilyLightArb,    color: colorTextTitle
+
+  );
 
   static TextStyle w600TextStyle() => fontStyle.copyWith(
         fontSize: 10.sp,
         fontWeight: FontWeight.w600,
         height: 1.2,
         overflow: TextOverflow.fade,
-        fontFamily: FontFamilyBoldArb,
-      );
+        fontFamily: FontFamilyBoldArb,    color: colorTextTitle
+
+  );
 
   static TextStyle w500TextStyle() => fontStyle.copyWith(
       fontSize: 10.sp,
       height: 1.2,
       overflow: TextOverflow.fade,
-      fontWeight: FontWeight.w500,
-      color: Styles.colorPrimary);
+      fontWeight: FontWeight.w500,    color: colorTextTitle
 
-  static BoxDecoration roundedDecoration = BoxDecoration(
-      borderRadius: BorderRadius.all(
-        Radius.circular(5.r),
-      ),
-      color: colorPrimary);
+       );
 
-  static BoxDecoration roundedDecorationWithRaduis({
-    double radius = 5,
-    Color color = const Color(0xFF488B89),
-  }) =>
-      BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(radius),
-          ),
-          color: color);
 
-  static BoxDecoration coloredRoundedDecorationWithRaduis({
+
+
+  static BoxDecoration coloredRoundedDecoration({
     double radius = 5,
     Color borderColor = const Color(0xFF488B89),
     Color color = const Color(0xFFFFFFFF),
+    List<BoxShadow> boxShadow=const []
   }) =>
       BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(radius),
           ),
           border: Border.all(color: borderColor),
-          color: color);
+          color: color,
+
+            boxShadow:
+            boxShadow
+            );
+
+  static BoxDecoration gradientRoundedDecoration({
+    double radius = 5,
+    Color borderColor = const Color(0xFF488B89),
+    Color color = const Color(0xFFFFFFFF),
+   List<Color>? gradientColor ,BorderRadiusGeometry? customBorder,
+   AlignmentGeometry? alignmentGeometryBegin,
+  AlignmentGeometry? alignmentGeometryEnd,
+    List<BoxShadow> boxShadow=const []
+  }) =>
+      BoxDecoration(
+          borderRadius: customBorder??BorderRadius.all(
+            Radius.circular(radius),
+          ),
+          // border: Border.all(color: borderColor),
+          color: color,
+gradient: LinearGradient(
+
+  colors: gradientColor??[
+    colorGradientStart,
+      colorGradientEnd
+  ],
+
+  begin: alignmentGeometryBegin??Alignment(0.5,1),
+  end:alignmentGeometryEnd?? Alignment(0.5,1),
+),
+          boxShadow:
+          boxShadow
+      );
 
   static TextStyle formInputTextStyle = fontStyle.copyWith(
       fontWeight: FontWeight.w200, fontFamily: Styles.FontFamily);
