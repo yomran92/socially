@@ -1,16 +1,21 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../account/data/remote/models/responses/user_model.dart';
+
 class GetCommentEntity extends Equatable {
   int? id;
 
-  String? todo;
 
-  bool? completed;
 
-  int? userId;
+    String? body;
+   int? postId;
+   int? likes;
+   int? userId;
 
-  GetCommentEntity({this.id, this.todo, this.completed, this.userId});
+
+  UserModel? user;
+  GetCommentEntity({this.id, this.body, this.postId, this.likes,this.user,this.userId});
 
   @override
-  List<Object?> get props => [id, todo, completed, userId];
+  List<Object?> get props => [id, body, postId, likes,user,userId];
 }

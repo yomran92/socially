@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import "package:flutter_test/flutter_test.dart";
-import 'package:todoapp/features/task/data/models/get_all_task_model.dart';
-import 'package:todoapp/features/task/data/models/task_model.dart';
+import 'package:socially/features/task/data/models/get_all_task_model.dart';
+import 'package:socially/features/task/data/models/task_model.dart';
 
 import '../../../../fixtures/fixture.dart';
 

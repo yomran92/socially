@@ -1,4 +1,4 @@
-import 'package:todoapp/features/account/data/remote/models/responses/user_model.dart';
+import 'package:socially/features/account/data/remote/models/responses/user_model.dart';
 
 import '../../../../domain/entities/login_entity.dart';
 

@@ -11,7 +11,7 @@ class GetAllCommentParams extends ParamsModel<GetAllCommentParamsBody> {
   RequestType? get requestType => RequestType.GET;
 
   @override
-  String? get url => 'todos/user/${sl<AppStateModel>().user!.id}';
+  String? get url => 'comments/post/${body!.postId}';
 
   @override
   Map<String, String> get urlParams => {
@@ -29,10 +29,11 @@ class GetAllCommentParams extends ParamsModel<GetAllCommentParamsBody> {
 class GetAllCommentParamsBody extends BaseBodyModel {
   final int? limit;
   final int? skip;
+  final int? postId;
 
   Map<String, dynamic> toJson() {
     return {};
   }
 
-  GetAllCommentParamsBody({required this.skip, required this.limit});
+  GetAllCommentParamsBody({required this.skip, required this.limit,required this.postId});
 }

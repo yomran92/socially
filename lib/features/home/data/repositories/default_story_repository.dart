@@ -13,7 +13,6 @@ import '../data_sources/remote/remote_data_source.dart';
 import '../models/get_all_story_model.dart';
 import '../models/param/get_all_story_param.dart';
 
-
 class DefaultStoryRepository implements StoryRepository {
   final StoryRemoteDataSource? remoteDataSource;
 
@@ -28,24 +27,22 @@ class DefaultStoryRepository implements StoryRepository {
           ConnectivityResult.none;
       final storyData;
       storyData = await remoteDataSource!.getAllStory(params);
-      final taskBox = await sl<HiveParamter>().hive.box(HiveKeys.taskBox);
+      final taskBox = await sl<HiveParamter>().hive.box(HiveKeys.storyBox);
 
-      GetAllStoryModel? getAllStoryModelLocal = taskBox.get(HiveKeys.taskListKey);
+      GetAllStoryModel? getAllStoryModelLocal =
+          taskBox.get(HiveKeys.storyListKey);
       if (getAllStoryModelLocal == null) {
         getAllStoryModelLocal =
-            GetAllStoryModel(skip: 0, total: 0, limit: 0, todos: []);
+            GetAllStoryModel(skip: 0, total: 0, limit: 0, storys: []);
       }
       GetAllStoryModel getAllStoryModel = storyData as GetAllStoryModel;
-      getAllStoryModelLocal.todos!.addAll(getAllStoryModel.todos ?? []);
-      getAllStoryModelLocal.todos!.toSet().toList();
-      taskBox.put(HiveKeys.taskListKey, storyData );
+      getAllStoryModelLocal.storys!.addAll(getAllStoryModel.storys ?? []);
+      getAllStoryModelLocal.storys!.toSet().toList();
+      taskBox.put(HiveKeys.storyListKey, storyData);
 
       return Right(getAllStoryModel.toEntity());
     } on AppException catch (e) {
       return Left(ErrorEntity.fromException(e));
     }
   }
-
-
-
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todoapp/core/string_lbl.dart';
+import 'package:socially/core/string_lbl.dart';
 
 import '../styles.dart';
 import 'custom_button.dart';
@@ -12,12 +12,14 @@ class ErrorWidgetScreen extends StatelessWidget {
   final Function callBack;
   final double? height;
   final double? width;
+  final bool? isHorizontal;
 
   const ErrorWidgetScreen(
       {required this.message,
       required this.callBack,
       this.width,
       this.height,
+      this.isHorizontal=false,
       Key? key})
       : super(key: key);
 
@@ -40,12 +42,36 @@ class ErrorWidgetScreen extends StatelessWidget {
                 ),
               ],
             ),
-            child: Column(
-              // mainAxisSize: MainAxisSize.min,
+            child:
+
+            (isHorizontal??false)?Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+
+                Container(
+
+
+
+                  child: CustomButton(
+                    // height: (height ?? 25) * 0.2,
+                    text: StringLbl.reload  ,
+                    style: Styles.w500TextStyle().copyWith(
+                        color: Styles.colorTextWhite, fontSize: 20.sp),
+                    textAlign: TextAlign.center,
+                    color:  Colors.transparent,
+                    fillColor: Colors.transparent,
+
+                    alignmentDirectional: AlignmentDirectional.center,
+                    onPressed: callBack,
+                  ),
+                ),
+              ],
+            ):
+            Column(
+               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // // SizedBox(height: height*0.2,),
 
                 Center(
                     child: CustomText(
@@ -59,8 +85,7 @@ class ErrorWidgetScreen extends StatelessWidget {
                 )),
 
                 Container(
-                  // padding: EdgeInsets.symmetric(vertical: 20.w,horizontal: 20.w),
-                  margin:
+                   margin:
                       EdgeInsets.symmetric(vertical: 20.w, horizontal: 20.w),
 
                   child: CustomButton(
@@ -69,8 +94,8 @@ class ErrorWidgetScreen extends StatelessWidget {
                     style: Styles.w500TextStyle().copyWith(
                         color: Styles.colorTextWhite, fontSize: 20.sp),
                     textAlign: TextAlign.center,
-                    color: Styles.colorPrimary,
-                    fillColor: Styles.colorPrimary,
+                    color:  Colors.transparent,
+                    fillColor: Colors.transparent,
                     alignmentDirectional: AlignmentDirectional.center,
                     onPressed: callBack,
                   ),

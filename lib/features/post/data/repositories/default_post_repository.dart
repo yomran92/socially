@@ -13,7 +13,6 @@ import '../data_sources/remote/remote_data_source.dart';
 import '../models/get_all_post_model.dart';
 import '../models/param/get_all_post_param.dart';
 
-
 class DefaultPostRepository implements PostRepository {
   final PostRemoteDataSource? remoteDataSource;
 
@@ -28,22 +27,21 @@ class DefaultPostRepository implements PostRepository {
           ConnectivityResult.none;
       final postData;
       postData = await remoteDataSource!.getAllPost(params);
-      final postBox = await sl<HiveParamter>().hive.box(HiveKeys.taskBox );
+      final postBox = await sl<HiveParamter>().hive.box(HiveKeys.postBox);
 
-      GetAllPostModel? getAllPostModelLocal = postBox.get(HiveKeys.taskListKey );
+      GetAllPostModel? getAllPostModelLocal = postBox.get(HiveKeys.postListKey);
       if (getAllPostModelLocal == null) {
         getAllPostModelLocal =
-            GetAllPostModel(skip: 0, total: 0, limit: 0, todos: []);
+            GetAllPostModel(skip: 0, total: 0, limit: 0, posts: []);
       }
       GetAllPostModel getAllPostModel = postData as GetAllPostModel;
-      getAllPostModelLocal.todos!.addAll(getAllPostModel.todos ?? []);
-      getAllPostModelLocal.todos!.toSet().toList();
-      postBox.put(HiveKeys.taskListKey, postData);
+      getAllPostModelLocal.posts!.addAll(getAllPostModel.posts ?? []);
+      getAllPostModelLocal.posts!.toSet().toList();
+      postBox.put(HiveKeys.postListKey, postData);
 
       return Right(postData.toEntity());
     } on AppException catch (e) {
       return Left(ErrorEntity.fromException(e));
     }
   }
-
 }

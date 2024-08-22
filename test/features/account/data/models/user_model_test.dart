@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import "package:flutter_test/flutter_test.dart";
-import 'package:todoapp/features/account/data/remote/models/responses/login_model.dart';
-import 'package:todoapp/features/account/data/remote/models/responses/user_model.dart';
+import 'package:socially/features/account/data/remote/models/responses/login_model.dart';
+import 'package:socially/features/account/data/remote/models/responses/user_model.dart';
 
 import '../../../../fixtures/fixture.dart';
 

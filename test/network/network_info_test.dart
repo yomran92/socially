@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:todoapp/core/utils/network_info.dart';
+import 'package:socially/core/utils/network_info.dart';
 
 class MockDataConnectionChecker extends Mock implements NetworkInfo {}
 

@@ -6,8 +6,6 @@ import '../../models/param/get_all_post_param.dart';
 
 abstract class IPostRemoteDataSource extends RemoteDataSource {
   Future<GetAllPostModel> getAllPost(GetAllPostParams params);
-
-
 }
 
 class PostRemoteDataSource extends IPostRemoteDataSource {
@@ -17,8 +15,6 @@ class PostRemoteDataSource extends IPostRemoteDataSource {
     this.hiveInterface,
   );
 
-
-
   @override
   Future<GetAllPostModel> getAllPost(GetAllPostParams params) async {
     var res;
@@ -27,6 +23,4 @@ class PostRemoteDataSource extends IPostRemoteDataSource {
 
     return Future.value(GetAllPostModel.fromJson(res));
   }
-
-
 }

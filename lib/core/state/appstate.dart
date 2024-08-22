@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/core/utils/hive_keys.dart';
+import 'package:socially/core/utils/hive_keys.dart';
 
 import '../../features/account/data/remote/models/responses/user_model.dart';
 import '../../service_locator.dart';
@@ -23,7 +23,8 @@ class AppStateModel with ChangeNotifier {
 
   Future<void> logOut() async {
     sl<HiveParamter>().hive.box(HiveKeys.userBox).clear();
-    sl<HiveParamter>().hive.box(HiveKeys.taskBox).clear();
+    sl<HiveParamter>().hive.box(HiveKeys.commentBox).clear();
+    sl<HiveParamter>().hive.box(HiveKeys.postBox).clear();
 
     notifyListeners();
   }

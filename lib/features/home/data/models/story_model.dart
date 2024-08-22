@@ -9,27 +9,29 @@ class StoryModel {
   @HiveField(0)
   int? id;
   @HiveField(1)
-  String? todo;
-  @HiveField(2)
-  bool? completed;
-  @HiveField(3)
-  int? userId;
 
-  StoryModel({this.id, this.todo, this.completed, this.userId});
+
+   String? name;
+  @HiveField(2)
+  String? image;
+  @HiveField(3)
+  bool? isSeen;
+
+  StoryModel({this.id, this.name, this.image, this.isSeen});
 
   StoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    todo = json['todo'];
-    completed = json['completed'];
-    userId = json['userId'];
+    name = json['firstName'] ;
+    image = json['image'];
+    isSeen = false;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['todo'] = this.todo;
-    data['completed'] = this.completed;
-    data['userId'] = this.userId;
+    data['firstName'] = this.name;
+    data['image'] = this.image;
+    data['isSeen'] = this.isSeen;
     return data;
   }
 
@@ -37,9 +39,9 @@ class StoryModel {
   GetStoryEntity toEntity() {
     return GetStoryEntity(
       id: id,
-      todo: todo,
-      completed: completed,
-      userId: userId,
+      name: name,
+      image: image,
+      isSeen: isSeen,
     );
   }
 }

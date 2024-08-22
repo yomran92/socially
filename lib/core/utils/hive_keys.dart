@@ -3,6 +3,14 @@ class HiveKeys {
   static const String userBox = "userBox";
 
 //Box
-  static const String taskBox = "taskBox";
-  static const String taskListKey = "taskListKey";
+  static const String postBox = "postBox";
+  static const String postListKey = "taskListKey";
+  //Box
+  static const String commentBox = "commentBox";
+  static const String commentListKey = "commentListKey";
+  static const String commentPostIdKey = "commentPostIdKey";
+//Box
+  static const String storyBox = "storyBox";
+  static const String storyListKey = "storyListKey";
+
 }

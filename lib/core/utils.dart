@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class Utils {
   static void pushNavigateTo(context, bool withNavBar, String route,
@@ -12,9 +11,11 @@ class Utils {
       Navigator.of(context).pushNamed(route, arguments: arguments);
     });
   }
+
   static void showToast(String message) {
     Fluttertoast.showToast(msg: message);
   }
+
   Map<T, List<S>> groupBy<S, T>(Iterable<S> values, T Function(S) key) {
     var map = <T, List<S>>{};
     for (var element in values) {
@@ -35,8 +36,6 @@ class Utils {
   //   return Navigator.of(context, rootNavigator: !withNavBar)
   //       .push<T>(customPageRoute as Route<T>);
   // }
-
-
 
   static void pushReplacementNavigateTo(context, String route, {arguments}) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {

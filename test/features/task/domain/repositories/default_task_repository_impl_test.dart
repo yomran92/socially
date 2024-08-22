@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:todoapp/core/error/error_entity.dart';
-import 'package:todoapp/core/utils/network_info.dart';
-import 'package:todoapp/features/task/data/data_sources/remote/remote_data_source.dart';
-import 'package:todoapp/features/task/data/models/get_all_task_model.dart';
-import 'package:todoapp/features/task/data/models/param/add_new_task_param.dart';
-import 'package:todoapp/features/task/data/models/param/get_all_task_param.dart';
-import 'package:todoapp/features/task/data/models/param/update_task_param.dart';
-import 'package:todoapp/features/task/data/models/task_model.dart';
-import 'package:todoapp/features/task/data/repositories/default_task_repository.dart';
+import 'package:socially/core/error/error_entity.dart';
+import 'package:socially/core/utils/network_info.dart';
+import 'package:socially/features/task/data/data_sources/remote/remote_data_source.dart';
+import 'package:socially/features/task/data/models/get_all_task_model.dart';
+import 'package:socially/features/task/data/models/param/add_new_task_param.dart';
+import 'package:socially/features/task/data/models/param/get_all_task_param.dart';
+import 'package:socially/features/task/data/models/param/update_task_param.dart';
+import 'package:socially/features/task/data/models/task_model.dart';
+import 'package:socially/features/task/data/repositories/default_task_repository.dart';
 
 class MockRemoteDataSource extends Mock implements TaskRemoteDataSource {}
 

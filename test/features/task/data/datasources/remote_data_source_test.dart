@@ -4,15 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
-import 'package:todoapp/core/constants.dart';
-import 'package:todoapp/core/error/app_exceptions.dart';
-import 'package:todoapp/features/task/data/data_sources/remote/remote_data_source.dart';
-import 'package:todoapp/features/task/data/models/get_all_task_model.dart';
-import 'package:todoapp/features/task/data/models/param/add_new_task_param.dart';
-import 'package:todoapp/features/task/data/models/param/delete_task_param.dart';
-import 'package:todoapp/features/task/data/models/param/get_all_task_param.dart';
-import 'package:todoapp/features/task/data/models/param/update_task_param.dart';
-import 'package:todoapp/features/task/data/models/task_model.dart';import '../../../../fixtures/fixture.dart';
+import 'package:socially/core/constants.dart';
+import 'package:socially/core/error/app_exceptions.dart';
+import 'package:socially/features/task/data/data_sources/remote/remote_data_source.dart';
+import 'package:socially/features/task/data/models/get_all_task_model.dart';
+import 'package:socially/features/task/data/models/param/add_new_task_param.dart';
+import 'package:socially/features/task/data/models/param/delete_task_param.dart';
+import 'package:socially/features/task/data/models/param/get_all_task_param.dart';
+import 'package:socially/features/task/data/models/param/update_task_param.dart';
+import 'package:socially/features/task/data/models/task_model.dart';import '../../../../fixtures/fixture.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 

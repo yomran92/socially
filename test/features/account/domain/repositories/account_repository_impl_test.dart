@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:todoapp/core/error/error_entity.dart';
-import 'package:todoapp/core/utils/network_info.dart';
-import 'package:todoapp/features/account/data/remote/data_sources/account_remote_data_source.dart';
-import 'package:todoapp/features/account/data/remote/models/params/login_params.dart';
-import 'package:todoapp/features/account/data/remote/models/responses/login_model.dart';
-import 'package:todoapp/features/account/data/remote/models/responses/user_model.dart';
-import 'package:todoapp/features/account/data/repositories/account_repository.dart';
+import 'package:socially/core/error/error_entity.dart';
+import 'package:socially/core/utils/network_info.dart';
+import 'package:socially/features/account/data/remote/data_sources/account_remote_data_source.dart';
+import 'package:socially/features/account/data/remote/models/params/login_params.dart';
+import 'package:socially/features/account/data/remote/models/responses/login_model.dart';
+import 'package:socially/features/account/data/remote/models/responses/user_model.dart';
+import 'package:socially/features/account/data/repositories/account_repository.dart';
 
 class MockRemoteDataSource extends Mock implements AccountRemoteDataSource {}
 

@@ -15,7 +15,6 @@ import '../models/get_all_comment_model.dart';
 import '../models/param/add_new_comment_param.dart';
 import '../models/param/get_all_comment_param.dart';
 
-
 class DefaultCommentRepository implements CommentRepository {
   final CommentRemoteDataSource? remoteDataSource;
 
@@ -30,17 +29,18 @@ class DefaultCommentRepository implements CommentRepository {
           ConnectivityResult.none;
       final taskData;
       taskData = await remoteDataSource!.getAllComment(params);
-      final taskBox = await sl<HiveParamter>().hive.box(HiveKeys.taskBox);
+      final taskBox = await sl<HiveParamter>().hive.box(HiveKeys.commentBox);
 
-      GetAllCommentModel? getAllCommentModelLocal = taskBox.get(HiveKeys.taskListKey);
+      GetAllCommentModel? getAllCommentModelLocal =
+          taskBox.get(HiveKeys.commentListKey);
       if (getAllCommentModelLocal == null) {
         getAllCommentModelLocal =
-            GetAllCommentModel(skip: 0, total: 0, limit: 0, todos: []);
+            GetAllCommentModel(skip: 0, total: 0, limit: 0, comments: []);
       }
       GetAllCommentModel getAllTaskModel = taskData as GetAllCommentModel;
-      getAllCommentModelLocal.todos!.addAll(getAllTaskModel.todos ?? []);
-      getAllCommentModelLocal.todos!.toSet().toList();
-      taskBox.put(HiveKeys.taskListKey, taskData);
+      getAllCommentModelLocal.comments!.addAll(getAllTaskModel.comments ?? []);
+      getAllCommentModelLocal.comments!.toSet().toList();
+      taskBox.put(HiveKeys.commentListKey, taskData);
 
       return Right(taskData.toEntity());
     } on AppException catch (e) {
@@ -67,8 +67,4 @@ class DefaultCommentRepository implements CommentRepository {
       return Left(ErrorEntity.fromException(e));
     }
   }
-
-
-
-
 }

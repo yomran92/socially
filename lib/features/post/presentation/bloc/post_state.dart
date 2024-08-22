@@ -24,12 +24,12 @@ class PostError extends PostState {
 }
 
 class GetAllPostLoadedState extends PostState {
-  final List<GetPostEntity>? tasks;
+  final List<GetPostEntity>? post;
   final int? total;
   final int? skip;
   final int? limit;
 
-  GetAllPostLoadedState({this.tasks, this.skip, this.limit, this.total}
+  GetAllPostLoadedState({this.post, this.skip, this.limit, this.total}
       // this.username,
       );
 

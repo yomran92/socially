@@ -1,35 +1,46 @@
 import 'package:hive/hive.dart';
 
+import '../../../account/data/remote/models/responses/user_model.dart';
 import '../../domain/entities/get_comment_entity.dart';
+part 'comment_model.g.dart';
 
-
-
-@HiveType(typeId: 0)
+@HiveType(typeId: 6)
 class CommentModel {
   @HiveField(0)
   int? id;
   @HiveField(1)
-  String? todo;
+  String? body;
   @HiveField(2)
-  bool? completed;
+  int? postId;
   @HiveField(3)
+  int? likes;
+  @HiveField(4)
   int? userId;
 
-  CommentModel({this.id, this.todo, this.completed, this.userId});
+  @HiveField(5)
+
+  UserModel? user;
+
+  CommentModel({this.id, this.body, this.postId, this.likes,this.userId,this.user});
 
   CommentModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    todo = json['todo'];
-    completed = json['completed'];
-    userId = json['userId'];
+    body = json['body'];
+    postId = json['postId'];
+    likes = json['likes'];
+    user = json['user'] != null ? new UserModel.fromJson(json['user']) : null;
+
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['todo'] = this.todo;
-    data['completed'] = this.completed;
-    data['userId'] = this.userId;
+    data['body'] = this.body;
+    data['postId'] = this.postId;
+    data['likes'] = this.likes;
+    if (this.user != null) {
+      data['user'] = this.user!.toJson();
+    }
     return data;
   }
 
@@ -37,9 +48,9 @@ class CommentModel {
   GetCommentEntity toEntity() {
     return GetCommentEntity(
       id: id,
-      todo: todo,
-      completed: completed,
-      userId: userId,
+      body: body,
+      likes: likes,postId: postId,user: user,
+    userId: userId
     );
   }
 }

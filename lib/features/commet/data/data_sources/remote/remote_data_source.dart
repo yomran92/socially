@@ -6,13 +6,10 @@ import '../../models/get_all_comment_model.dart';
 import '../../models/param/add_new_comment_param.dart';
 import '../../models/param/get_all_comment_param.dart';
 
-
 abstract class ICommentRemoteDataSource extends RemoteDataSource {
   Future<GetAllCommentModel> getAllComment(GetAllCommentParams params);
 
   Future<CommentModel> addNewComment(AddCommentParams params);
-
-
 }
 
 class CommentRemoteDataSource extends ICommentRemoteDataSource {
@@ -28,8 +25,6 @@ class CommentRemoteDataSource extends ICommentRemoteDataSource {
     return Future.value(CommentModel.fromJson(res));
   }
 
-
-
   @override
   Future<GetAllCommentModel> getAllComment(GetAllCommentParams params) async {
     var res;
@@ -38,6 +33,4 @@ class CommentRemoteDataSource extends ICommentRemoteDataSource {
 
     return Future.value(GetAllCommentModel.fromJson(res));
   }
-
-
 }

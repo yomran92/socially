@@ -17,8 +17,6 @@ class ResetBlocEvent extends StoryEvent {
       ];
 }
 
-
-
 class GetAllStoryEvent extends StoryEvent {
   final GetAllStoryParams params;
 

@@ -8,13 +8,17 @@ class Styles {
   static Color get colorPrimary => Color(0xFF05101C);
 
   static Color get colorSecondry => Color(0xFFDD623A);
+
   static Color get colorIconActive => Color(0xFF05101C);
+
   static Color get colorDivider => Color(0xFF05101C);
+
   static Color get colorIconInActive => Color(0xFF363636);
 
   static Color get colorBackground => Color(0xFF2D2D2D);
 
   static Color get colorBackgroundNavBar => Color(0xFFFFFFFF);
+
   static Color get colorShadow => Color(0x0000000);
 
   static Color get colorBackgroundAppBar => Color(0xFFFFFFFF);
@@ -22,27 +26,27 @@ class Styles {
   static Color get colorGradientStart => Color(0xFF435A73);
 
   static Color get colorGradientEnd => Color(0xFF182A3E);
+
   static Color get colorReplay => Color(0xFFAACFF1);
+
   static Color get colorBackgroundGradientStart => Color(0xFF05101C);
 
   static Color get colorBackgroundGradientEnd => Color(0xFF040f1c);
+
   static Color get colorStoryGradientStart => Color(0x4C425973);
 
   static Color get colorStoryGradientEnd => Color(0x4C172A3E);
+
   static Color get colorTextInactive => Color(0xFF05101C);
-
-
-
-
-
 
   static Color get colorBackArrowIcon => Color(0xFF7662B3);
 
-
-
   static Color get colorTextTitle => Color(0xFF363636);
+
   static Color get colorStorygradient1 => Color(0xFFFFED001A);
+
   static Color get colorStorygradient2 => Color(0xFF00A75D1A);
+
   static Color get colorStorygradient3 => Color(0xFF009FE31A);
 
   static Color get colorTextDialogDangerTitle => Color(0xFFF2994A);
@@ -50,6 +54,7 @@ class Styles {
   static Color get colorTextTextField => Color(0xFF4F4F4F);
 
   static Color get colorBackgroundContanier => Color(0xFFFFFFFF);
+
   static Color get colorBackgroundWithIconContanier => Color(0xFFF1F1F1);
 
   static Color get colorBorderTextField => Color(0xFFE0E0E0);
@@ -57,8 +62,6 @@ class Styles {
   static Color get colorTextWhite => Color(0xFFFFFFFF);
 
   static Color get colorTextError => Color(0xFFEB5757);
-
-
 
   /// font
   static const FontFamily = 'Alexandria';
@@ -83,16 +86,11 @@ class Styles {
 
   static TextStyle get fontStyle => TextStyle(fontFamily: FontFamily);
 
-  static TextStyle get fontW500Style => TextStyle(
-        fontFamily: FontFamily,
-    color: colorTextTitle
-      );
+  static TextStyle get fontW500Style =>
+      TextStyle(fontFamily: FontFamily, color: colorTextTitle);
 
-  static TextStyle get fontW300Style => TextStyle(
-        fontFamily: FontFamily,
-      color: colorTextTitle
-
-  );
+  static TextStyle get fontW300Style =>
+      TextStyle(fontFamily: FontFamily, color: colorTextTitle);
 
   static StrutStyle get structStyle => StrutStyle(fontFamily: FontFamily);
 
@@ -117,93 +115,72 @@ class Styles {
       overflow: TextOverflow.fade,
       // fontFamily: !isArb ? FontFamilyBoldArb : Styles.FontFamily,
       fontFamily: FontFamilyBoldArb,
-     color: colorTextTitle
-  );
+      color: colorTextTitle);
 
   static TextStyle w400TextStyle() => fontStyle.copyWith(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400,
-        fontFamily: FontFamilyRegularArb,
-        height: 1.2,
-        overflow: TextOverflow.fade,
-      color: colorTextTitle
-
-  );
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w400,
+      fontFamily: FontFamilyRegularArb,
+      height: 1.2,
+      overflow: TextOverflow.fade,
+      color: colorTextTitle);
 
   static TextStyle w300TextStyle() => fontStyle.copyWith(
-        fontSize: 10.sp,
-        fontWeight: FontWeight.w300,
-        height: 1.2,
-        overflow: TextOverflow.fade,
-        fontFamily: FontFamilyLightArb,    color: colorTextTitle
-
-  );
+      fontSize: 10.sp,
+      fontWeight: FontWeight.w300,
+      height: 1.2,
+      overflow: TextOverflow.fade,
+      fontFamily: FontFamilyLightArb,
+      color: colorTextTitle);
 
   static TextStyle w600TextStyle() => fontStyle.copyWith(
-        fontSize: 10.sp,
-        fontWeight: FontWeight.w600,
-        height: 1.2,
-        overflow: TextOverflow.fade,
-        fontFamily: FontFamilyBoldArb,    color: colorTextTitle
-
-  );
+      fontSize: 10.sp,
+      fontWeight: FontWeight.w600,
+      height: 1.2,
+      overflow: TextOverflow.fade,
+      fontFamily: FontFamilyBoldArb,
+      color: colorTextTitle);
 
   static TextStyle w500TextStyle() => fontStyle.copyWith(
       fontSize: 10.sp,
       height: 1.2,
       overflow: TextOverflow.fade,
-      fontWeight: FontWeight.w500,    color: colorTextTitle
+      fontWeight: FontWeight.w500,
+      color: colorTextTitle);
 
-       );
-
-
-
-
-  static BoxDecoration coloredRoundedDecoration({
-    double radius = 5,
-    Color borderColor = const Color(0xFF488B89),
-    Color color = const Color(0xFFFFFFFF),
-    List<BoxShadow> boxShadow=const []
-  }) =>
+  static BoxDecoration coloredRoundedDecoration(
+          {double radius = 5,
+          Color borderColor = const Color(0xFF488B89),
+          Color color = const Color(0xFFFFFFFF),
+          List<BoxShadow> boxShadow = const []}) =>
       BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(radius),
           ),
           border: Border.all(color: borderColor),
           color: color,
+          boxShadow: boxShadow);
 
-            boxShadow:
-            boxShadow
-            );
-
-  static BoxDecoration gradientRoundedDecoration({
-    double radius = 5,
-    Color borderColor = const Color(0xFF488B89),
-    Color color = const Color(0xFFFFFFFF),
-   List<Color>? gradientColor ,BorderRadiusGeometry? customBorder,
-   AlignmentGeometry? alignmentGeometryBegin,
-  AlignmentGeometry? alignmentGeometryEnd,
-    List<BoxShadow> boxShadow=const []
-  }) =>
+  static BoxDecoration gradientRoundedDecoration(
+          {double radius = 5,
+          Color borderColor = const Color(0xFF488B89),
+          Color color = const Color(0xFFFFFFFF),
+          List<Color>? gradientColor,
+          BorderRadiusGeometry? customBorder,
+          AlignmentGeometry? alignmentGeometryBegin,
+          AlignmentGeometry? alignmentGeometryEnd,
+          List<BoxShadow> boxShadow = const []}) =>
       BoxDecoration(
-          borderRadius: customBorder??BorderRadius.all(
-            Radius.circular(radius),
+          borderRadius: customBorder ??
+              BorderRadius.all(
+                Radius.circular(radius),
+              ),
+           gradient: LinearGradient(
+            colors: gradientColor ?? [colorGradientStart, colorGradientEnd],
+            begin: alignmentGeometryBegin ?? Alignment(0.5, 1),
+            end: alignmentGeometryEnd ?? Alignment(0.5, 1),
           ),
-          // border: Border.all(color: borderColor),
-          color: color,
-gradient: LinearGradient(
-
-  colors: gradientColor??[
-    colorGradientStart,
-      colorGradientEnd
-  ],
-
-  begin: alignmentGeometryBegin??Alignment(0.5,1),
-  end:alignmentGeometryEnd?? Alignment(0.5,1),
-),
-          boxShadow:
-          boxShadow
-      );
+          boxShadow: boxShadow);
 
   static TextStyle formInputTextStyle = fontStyle.copyWith(
       fontWeight: FontWeight.w200, fontFamily: Styles.FontFamily);

@@ -4,7 +4,6 @@ abstract class PostEvent extends Equatable {
   const PostEvent();
 }
 
-
 class GetAllPostEvent extends PostEvent {
   final GetAllPostParams params;
 

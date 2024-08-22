@@ -1,16 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:todoapp/service_locator.dart';
+import 'package:socially/service_locator.dart';
+
 import '../../data/models/param/add_new_comment_param.dart';
 import '../../data/models/param/get_all_comment_param.dart';
 import '../../domain/entities/get_comment_entity.dart';
- import '../../domain/repositories/comment_repository.dart';
- import '../../domain/usecases/add_new_comment_usecase.dart';
+import '../../domain/repositories/comment_repository.dart';
+import '../../domain/usecases/add_new_comment_usecase.dart';
 import '../../domain/usecases/get_all_comment_usecase.dart';
 
-
-part 'comment_event.dart';
-part 'comment_state.dart';
+part 'comment_event.dart';part 'comment_state.dart';
 
 const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
 
@@ -21,12 +20,15 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
     on<GetAllCommentEvent>((event, emit) async {
       emit(CommentLoading());
 
-      var res =
-          await GetAllCommentUsecase(sl<CommentRepository>()).call(event.params);
+      var res = await GetAllCommentUsecase(sl<CommentRepository>())
+          .call(event.params);
       emit(res.fold(
           (l) => CommentError(message: l.errorMessage ?? ''),
           (r) => GetAllCommentLoadedState(
-              skip: r.skip, limit: r.limit, comments: r.todos, total: r.total)));
+              skip: r.skip,
+              limit: r.limit,
+              comments: r.comments,
+              total: r.total)));
     });
 
     on<AddNewCommentEvent>((event, emit) async {
@@ -38,11 +40,10 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
           (l) => CommentError(message: l.errorMessage ?? ''),
           (r) => AddNewCommentState(GetCommentEntity(
                 id: r.id,
-                todo: r.todo,
-                completed: r.completed,
+                body: r.body,
+                // completed: r.completed,
                 userId: r.userId,
               ))));
     });
-
   }
 }

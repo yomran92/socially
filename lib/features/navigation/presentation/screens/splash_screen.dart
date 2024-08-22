@@ -1,10 +1,10 @@
- import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
- import 'package:todoapp/core/widget/waiting_widget.dart';
+import 'package:socially/core/widget/waiting_widget.dart';
 
 import '../../../../core/routing/route_paths.dart';
- import '../../../../core/state/appstate.dart';
+import '../../../../core/state/appstate.dart';
 import '../../../../core/string_lbl.dart';
 import '../../../../core/utils.dart';
 import '../../../../core/utils/helper_function.dart';
@@ -53,7 +53,7 @@ class _SplashcreenState extends State<SplashScreen> {
           child: Scaffold(
             resizeToAvoidBottomInset: true, //new line
 
-            body: Center(child: WaitingWidget()),
+            body: Center(child: Container()),
           ),
         ));
   }
@@ -83,21 +83,23 @@ class _SplashcreenState extends State<SplashScreen> {
       } else {
         if (userBox.values.firstOrNull == null) {
           goToLogin();
-        }else{
-        userModel = userBox.values.firstOrNull as UserModel;
+        } else {
+          userModel = userBox.values.firstOrNull as UserModel;
 
-        sl<AppStateModel>().setUser(userModel);
+          sl<AppStateModel>().setUser(userModel);
 
-        HelperFunction.showToast(sl<NetworkInfo>().connectivityNotifier.value ==
-                ConnectivityResult.none
-            ? StringLbl.offlineMode
-            : StringLbl.onlineMode);
-        Utils.popNavigateToFirst(context);
-        Utils.pushReplacementNavigateTo(
-          context,
-          RoutePaths.NavMainScreen,
-        );
-      }}
+          HelperFunction.showToast(
+              sl<NetworkInfo>().connectivityNotifier.value ==
+                      ConnectivityResult.none
+                  ? StringLbl.offlineMode
+                  : StringLbl.onlineMode);
+          Utils.popNavigateToFirst(context);
+          Utils.pushReplacementNavigateTo(
+            context,
+            RoutePaths.NavMainScreen,
+          );
+        }
+      }
     } catch (e) {
       goToLogin();
 

@@ -7,6 +7,4 @@ import '../entities/get_all_story_entity.dart';
 abstract class StoryRepository {
   Future<Either<ErrorEntity, GetAllStoryEntity>> getAllStory(
       GetAllStoryParams params);
-
-
 }

@@ -1,6 +1,5 @@
 part of 'story_bloc.dart';
 
-
 abstract class StoryState extends Equatable {
   const StoryState();
 }
@@ -25,12 +24,12 @@ class StoryError extends StoryState {
 }
 
 class GetAllStoryLoadedState extends StoryState {
-  final List<GetStoryEntity>? tasks;
+  final List<GetStoryEntity>? storys;
   final int? total;
   final int? skip;
   final int? limit;
 
-  GetAllStoryLoadedState({this.tasks, this.skip, this.limit, this.total}
+  GetAllStoryLoadedState({this.storys, this.skip, this.limit, this.total}
       // this.username,
       );
 
@@ -41,4 +40,3 @@ class GetAllStoryLoadedState extends StoryState {
         // this.username,
       ];
 }
-

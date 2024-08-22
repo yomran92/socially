@@ -9,7 +9,7 @@ class AddCommentParams extends ParamsModel<AddCommentParamsBody> {
   RequestType? get requestType => RequestType.POST;
 
   @override
-  String? get url => 'todos/add';
+  String? get url => 'comments/add';
 
   @override
   Map<String, String> get urlParams => {};
@@ -27,17 +27,20 @@ class AddCommentParamsBody extends BaseBodyModel {
   bool? completed;
 
   int? userId;
+  int? postId;
 
   Map<String, dynamic> toJson() {
     return {
-      'todo': todo,
+      'body': todo,
       'completed': completed,
       'userId': userId,
+      'postId': postId,
     };
   }
 
   AddCommentParamsBody({
     required this.todo,
+    required this.postId,
     required this.completed,
     required this.userId,
   });

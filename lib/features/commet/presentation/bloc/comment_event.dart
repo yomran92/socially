@@ -17,7 +17,6 @@ class ResetBlocEvent extends CommentEvent {
       ];
 }
 
-
 class GetAllCommentEvent extends CommentEvent {
   final GetAllCommentParams params;
 

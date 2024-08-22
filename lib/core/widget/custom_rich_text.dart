@@ -23,7 +23,7 @@ class CustomRichText extends StatelessWidget {
       this.numOfLine,
       this.withtextWithemogi = false,
       this.textWithemogi,
-      Key? key})
+       Key? key})
       : super(key: key);
 
   @override
@@ -38,10 +38,8 @@ class CustomRichText extends StatelessWidget {
         if (match.start > currentIndex) {
           spans.add(TextSpan(
             text: textWithemogi!.substring(currentIndex, match.start),
-            style: Styles.w400TextStyle().copyWith(
-                fontSize: 16.sp,
-                 color: Styles.colorTextInactive
-            ),
+            style: Styles.w400TextStyle()
+                .copyWith(fontSize: 16.sp, color: Styles.colorTextInactive),
           ));
         }
 
@@ -50,8 +48,7 @@ class CustomRichText extends StatelessWidget {
           style: Styles.w600TextStyle().copyWith(
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
-              color: Styles.colorTextInactive
-          ),
+              color: Styles.colorTextInactive),
         ));
 
         currentIndex = match.end;
@@ -69,7 +66,8 @@ class CustomRichText extends StatelessWidget {
               vertical: paddingVertical, horizontal: paddingHorizantal),
           alignment: alignmentGeometry,
           child: RichText(
-            text: TextSpan(children: spans),
+            textAlign: textAlign??TextAlign.start,
+             text: TextSpan(children: spans),
           ));
     } else {
       return Container(
@@ -77,7 +75,7 @@ class CustomRichText extends StatelessWidget {
             vertical: paddingVertical, horizontal: paddingHorizantal),
         alignment: alignmentGeometry,
         child: RichText(
-          textAlign: TextAlign.center,
+           textAlign: textAlign??TextAlign.start,
           text: new TextSpan(
               style: Styles.w300TextStyle()
                   .copyWith(fontSize: 16.sp, color: Styles.colorTextTitle),

@@ -41,7 +41,6 @@ class GetAllCommentLoadedState extends CommentState {
       ];
 }
 
-
 class AddNewCommentState extends CommentState {
   final GetCommentEntity task;
 

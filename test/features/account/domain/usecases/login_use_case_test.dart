@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:todoapp/features/account/data/remote/models/params/login_params.dart';
-import 'package:todoapp/features/account/data/remote/models/responses/user_model.dart';
-import 'package:todoapp/features/account/data/repositories/account_repository.dart';
-import 'package:todoapp/features/account/domain/entities/login_entity.dart';
-import 'package:todoapp/features/account/domain/use_cases/login_use_case.dart';
+import 'package:socially/features/account/data/remote/models/params/login_params.dart';
+import 'package:socially/features/account/data/remote/models/responses/user_model.dart';
+import 'package:socially/features/account/data/repositories/account_repository.dart';
+import 'package:socially/features/account/domain/entities/login_entity.dart';
+import 'package:socially/features/account/domain/use_cases/login_use_case.dart';
 
 class MockAccountRepository extends Mock implements AccountRepository {}
 

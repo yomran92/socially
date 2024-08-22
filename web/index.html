@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
     <!--
       If you are serving your web app in a path other than the root, change the
       href value below to reflect the base path you are serving from.
@@ -39,7 +37,10 @@
     </script>
     <!-- This script adds the flutter initialization JS code -->
     <script defer="" src="flutter.js"></script>
-    <style id="splash-screen-style">
+    
+    
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <style id="splash-screen-style">
     html {
       height: 100%
     }
@@ -47,7 +48,7 @@
     body {
       margin: 0;
       min-height: 100%;
-      background-color: #488B89;
+      background-color: #05101C;
           background-size: 100% 100%;
     }
 
@@ -96,18 +97,14 @@
       bottom: 0;
       right: 0;
     }
-
-    </style>
-    <script id="splash-screen-script">
+  </style>
+  <script id="splash-screen-script">
     function removeSplashFromWeb() {
       document.getElementById("splash")?.remove();
       document.getElementById("splash-branding")?.remove();
       document.body.style.background = "transparent";
     }
-
-    </script>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-          name="viewport">
+  </script>
 </head>
 <body>
 <script>
@@ -128,5 +125,5 @@
 </script>
 
 
-</body>
-</html>
+
+</body></html>

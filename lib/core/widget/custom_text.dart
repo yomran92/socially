@@ -11,7 +11,8 @@ class CustomText extends StatelessWidget {
   final AlignmentGeometry alignmentGeometry;
   final double paddingVertical;
   final double paddingHorizantal;
-final bool isNumberFormat;
+  final bool isNumberFormat;
+
   const CustomText(
       {required this.text,
       required this.style,
@@ -19,16 +20,16 @@ final bool isNumberFormat;
       this.paddingVertical = 0,
       this.paddingHorizantal = 0,
       this.textAlign,
-      this.isNumberFormat=false,
+      this.isNumberFormat = false,
       this.numOfLine,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if(isNumberFormat){
+    if (isNumberFormat) {
       final formatter = NumberFormat("#,###");
-       final formattedNumber = formatter.format(int.tryParse(text));
+      final formattedNumber = formatter.format(int.tryParse(text));
       return Container(
           padding: EdgeInsets.symmetric(
               vertical: paddingVertical, horizontal: paddingHorizantal),
@@ -49,26 +50,27 @@ final bool isNumberFormat;
             maxLines: this.numOfLine,
             // overflow: TextOverflow.ellipsis,
           ));
-     }else{
-    return Container(
-        padding: EdgeInsets.symmetric(
-            vertical: paddingVertical, horizontal: paddingHorizantal),
-        alignment: alignmentGeometry,
-        child: Text(
-          text,
-          textAlign: textAlign ?? TextAlign.start,
-          strutStyle: StrutStyle(
-              height: 1.2,
-              forceStrutHeight: true,
-              fontSize: style.fontSize,
-              fontFamily: style.fontFamily,
-              fontWeight: style.fontWeight,
-              fontStyle: FontStyle.normal),
-          style: this.style,
-          softWrap: true,
-          overflow: TextOverflow.clip,
-          maxLines: this.numOfLine,
-          // overflow: TextOverflow.ellipsis,
-        ));
-  }}
+    } else {
+      return Container(
+          padding: EdgeInsets.symmetric(
+              vertical: paddingVertical, horizontal: paddingHorizantal),
+          alignment: alignmentGeometry,
+          child: Text(
+            text,
+            textAlign: textAlign ?? TextAlign.start,
+            strutStyle: StrutStyle(
+                height: 1.2,
+                forceStrutHeight: true,
+                fontSize: style.fontSize,
+                fontFamily: style.fontFamily,
+                fontWeight: style.fontWeight,
+                fontStyle: FontStyle.normal),
+            style: this.style,
+            softWrap: true,
+            overflow: TextOverflow.clip,
+            maxLines: this.numOfLine,
+            // overflow: TextOverflow.ellipsis,
+          ));
+    }
+  }
 }

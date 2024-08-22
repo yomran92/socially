@@ -1,7 +1,5 @@
 import '../../../../../core/constants.dart';
 import '../../../../../core/params/params_model.dart';
-import '../../../../../core/state/appstate.dart';
-import '../../../../../service_locator.dart';
 
 class GetAllPostParams extends ParamsModel<GetAllPostParamsBody> {
   @override

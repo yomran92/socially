@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todoapp/core/utils.dart';
-import 'package:todoapp/core/utils/hive_keys.dart';
-import 'package:todoapp/core/widget/custom_text.dart';
+import 'package:socially/core/utils.dart';
+import 'package:socially/core/utils/hive_keys.dart';
 
 import '../../../../core/assets_path.dart';
 import '../../../../core/routing/route_paths.dart';
@@ -55,69 +54,66 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      SafeArea(
-        top: true,
+    return SafeArea(
+       child: Scaffold(
+        // backgroundColor: Colors.transparent,
+        body: Container(
+            decoration: Styles.gradientRoundedDecoration(
+              radius: 0.r,
 
-        child:
-      Scaffold(
-
-         body:
-        SafeArea(
-          child:Container(
-          decoration: Styles.gradientRoundedDecoration(
-            radius: 0.r,
-
-            gradientColor: [Styles.colorBackgroundGradientStart,Styles.colorBackgroundGradientEnd],
-
-          ),
-          width: double.maxFinite,
-          height: double.maxFinite,
-         child:
-         FormBuilder(
-          key: _formKey,
-          child: Container(
-              height: MediaQuery.of(context).size.height,
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SocialAppBar(
-                      withNotification: false,
-                      tail: [Row(children: [
-
-
-                        CustomPicture(path: AssetsPath.SVGSocially,
-
-                            isSVG: true,
-                            height: 23.h, width: 144.w)
-                      ],)],
+              gradientColor: [
+                Styles.colorBackgroundGradientStart,
+                Styles.colorBackgroundGradientEnd
+              ],
+            ),
+            width: double.maxFinite,
+            height: double.maxFinite,
+            child: FormBuilder(
+              key: _formKey,
+              child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SocialAppBar(
+                          withNotification: false,
+                          tail: [
+                            Row(
+                              children: [
+                                CustomPicture(
+                                    path: AssetsPath.SVGSocially,
+                                    isSVG: true,
+                                    height: 23.h,
+                                    width: 144.w)
+                              ],
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 85.h,
+                        ),
+                        _buildUsername(),
+                        CommonSizes.vSmallSpace,
+                        _buildPassword(),
+                        CommonSizes.vSmallSpace,
+                        _buildBtnLogin(),
+                        CommonSizes.vSmallSpace,
+                      ],
                     ),
-
-
-                    SizedBox(
-                      height: 85.h,
-                    ),
-                    _buildUsername(),
-                    CommonSizes.vSmallSpace,
-                    _buildPassword(),
-                    CommonSizes.vSmallSpace,
-                    _buildBtnLogin(),
-                    CommonSizes.vSmallSpace,
-                  ],
-                ),
-              )),
-        )),
-        )),
+                  )),
+            )),
+      ),
     );
   }
 
   @override
   void initState() {
-    _usernameController.text = 'emilys' ;
-    _passwordController.text = 'emilyspass' ;
+    _usernameController.text = 'emilys';
+    _passwordController.text = 'emilyspass';
     super.initState();
   }
 
@@ -141,7 +137,7 @@ class _LogInScreenState extends State<LogInScreen> {
           .copyWith(fontSize: 16.sp, color: Styles.colorTextTextField),
       textAlign: TextAlign.left,
       focusNode: _usernameFocusNode,
-      hintText:  '',
+      hintText: '',
       minLines: 1,
       onChanged: (String value) {
         if (_usernameKey.currentState!.validate()) {}
@@ -171,7 +167,7 @@ class _LogInScreenState extends State<LogInScreen> {
           .copyWith(fontSize: 16.sp, color: Styles.colorTextTextField),
       textAlign: TextAlign.left,
       focusNode: _passwordFocusNode,
-      hintText:  '',
+      hintText: '',
       minLines: 1,
       onChanged: (String value) {
         if (_passwordKey.currentState!.validate()) {}
@@ -199,7 +195,7 @@ class _LogInScreenState extends State<LogInScreen> {
             Utils.popNavigateToFirst(context);
             Utils.pushReplacementNavigateTo(
               context,
-              RoutePaths.TaskScreen,
+              RoutePaths.NavMainScreen,
             );
           }
         },
@@ -215,10 +211,10 @@ class _LogInScreenState extends State<LogInScreen> {
 
               style: Styles.w600TextStyle()
                   .copyWith(fontSize: 18.sp, color: Styles.colorTextWhite),
-              raduis:25 .r,
+              raduis: 25.r,
               textAlign: TextAlign.center,
               color: Styles.colorPrimary,
-              fillColor: Styles.colorGradientStart ,
+              fillColor: Styles.colorGradientStart,
               // width: 350.w,
               height: 52.h,
               alignmentDirectional: AlignmentDirectional.center,

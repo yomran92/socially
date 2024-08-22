@@ -1,8 +1,7 @@
 import 'package:hive/hive.dart';
-
 part 'user_model.g.dart';
 
-@HiveType(typeId: 2)
+@HiveType(typeId: 8)
 class UserModel {
   @HiveField(0)
   int? id;
