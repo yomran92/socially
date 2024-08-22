@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:socially/core/string_lbl.dart';
 
 import '../../../../core/assets_path.dart';
 import '../../../../core/styles.dart';
@@ -70,9 +71,7 @@ class PostCard extends StatelessWidget {
                   fontSize: 16.sp))],
 
           textWithemogi:postEntity.body!+
-          """Stopped by @zoesugg today with goosey girl to see @kyliecosmetics & @kylieskin 💕 wow what a dream!!!!!!!!
-                   It’s the best experience we have!""",
-          withtextWithemogi: isImage,
+          StringLbl.textEx,  withtextWithemogi: isImage,
 
         ):
         CustomPicture(path: AssetsPath.SVGNAVBarProfile,

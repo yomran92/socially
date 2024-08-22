@@ -169,7 +169,7 @@ class _StoryWidgetState extends State<StoryWidget> {
                               },
                               child: getAllStoryLoadedState == null
                                   ? EmptyStateWidget(
-                                      text: 'no data found add some task',
+                                      text: StringLbl.noDataFound,
                                     )
                                   : ListView.separated(
                                       padding: EdgeInsets.only(left: 8.h),

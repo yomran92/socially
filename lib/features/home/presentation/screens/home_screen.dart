@@ -9,8 +9,7 @@ import '../../../../core/styles.dart';
 import '../../../../core/widget/social_app_bar.dart';import '../../../post/presentation/screen/post_widget.dart';
 import '../components/story_widget.dart';
 
-const String progressIndicatorKey = "PROGRESS INDICATOR KEY";
-class  HomeScreen extends StatelessWidget {
+ class  HomeScreen extends StatelessWidget {
   const HomeScreen ({super.key});
 
 

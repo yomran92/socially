@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:socially/core/assets_path.dart';
+import 'package:socially/core/string_lbl.dart';
 import 'package:socially/core/utils.dart';
 import 'package:socially/core/utils/common_sizes.dart';
 import 'package:socially/core/widget/custom_svg_picture.dart';
@@ -117,7 +118,7 @@ class _StoryViewerState extends State<StoryViewer> {
                                   color: Styles.colorTextWhite,
                                   fontSize: 20.sp)),
                           new TextSpan(
-                              text: '2 d ago',
+                              text: StringLbl.numOfdago,
                               style: Styles.w600TextStyle().copyWith(
                                   color: Styles.colorTextWhite,
                                   fontSize: 16.sp)),
@@ -165,7 +166,7 @@ class _StoryViewerState extends State<StoryViewer> {
                           height: 13.h,
                         ),
                         CustomText(
-                          text: 'Mediatiobn',
+                          text: StringLbl.mediatiobn,
                           style: Styles.w500TextStyle().copyWith(
                               fontSize: 14.sp,
                               color: Styles.colorBackArrowIcon),
