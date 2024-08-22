@@ -19,6 +19,6 @@ class StringLbl {
   static String numOfdago = '2 d ago ';
   static String mediatiobn = 'Mediatiobn ';
   static String textEx = """Stopped by @zoesugg today with goosey girl to see @kyliecosmetics & @kylieskin 💕 wow what a dream!!!!!!!!
-                   It’s the best experience we have!""",
+                   It’s the best experience we have!""";
 
 }
