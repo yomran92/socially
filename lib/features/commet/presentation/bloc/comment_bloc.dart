@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:todoapp/service_locator.dart';
-import '../../../task/domain/entities/get_task_entity.dart';
 import '../../data/models/param/add_new_comment_param.dart';
 import '../../data/models/param/get_all_comment_param.dart';
 import '../../domain/entities/get_comment_entity.dart';
