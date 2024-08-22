@@ -23,7 +23,7 @@ class CustomRichText extends StatelessWidget {
       this.numOfLine,
       this.withtextWithemogi = false,
       this.textWithemogi,
-       Key? key})
+      Key? key})
       : super(key: key);
 
   @override
@@ -66,8 +66,8 @@ class CustomRichText extends StatelessWidget {
               vertical: paddingVertical, horizontal: paddingHorizantal),
           alignment: alignmentGeometry,
           child: RichText(
-            textAlign: textAlign??TextAlign.start,
-             text: TextSpan(children: spans),
+            textAlign: textAlign ?? TextAlign.start,
+            text: TextSpan(children: spans),
           ));
     } else {
       return Container(
@@ -75,7 +75,7 @@ class CustomRichText extends StatelessWidget {
             vertical: paddingVertical, horizontal: paddingHorizantal),
         alignment: alignmentGeometry,
         child: RichText(
-           textAlign: textAlign??TextAlign.start,
+          textAlign: textAlign ?? TextAlign.start,
           text: new TextSpan(
               style: Styles.w300TextStyle()
                   .copyWith(fontSize: 16.sp, color: Styles.colorTextTitle),

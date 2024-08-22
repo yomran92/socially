@@ -1,7 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -30,13 +28,14 @@ import '../bloc/comment_bloc.dart';
 
 class CommentBottomSheet extends StatefulWidget {
   int postID;
+
   CommentBottomSheet({required this.postID});
+
   @override
   _CommentBottomSheetState createState() => _CommentBottomSheetState();
 }
 
 class _CommentBottomSheetState extends State<CommentBottomSheet> {
-
   GetAllCommentLoadedState? getAllCommentLoadedState;
   bool _enablePullUp = true;
   int _currentSection = 1;
@@ -65,74 +64,57 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
     sl<CommentBloc>().add(GetAllCommentEvent(
         params: GetAllCommentParams(
             body: GetAllCommentParamsBody(
-                limit: Pagelimit, skip: (_currentSection - 1) * Pagelimit,postId:widget.postID))));
+                limit: Pagelimit,
+                skip: (_currentSection - 1) * Pagelimit,
+                postId: widget.postID))));
   }
 
   final TextEditingController _commentController = TextEditingController();
 
-  void _addNewComment(String text) {
-    setState(() {
-      // comments.add(CommentWidget(
-      //   userName: 'CurrentUser',
-      //   text: text,
-      //   dateTime: 'Just now',
-      // ));
-    });
-    _commentController.clear();
-  }
+
+  FocusNode _commentFocusNode = FocusNode();
+
+  final GlobalKey<FormFieldState<String>> _commentKey =
+  new GlobalKey<FormFieldState<String>>();
 
   @override
   Widget build(BuildContext context) {
-    return
-
-
-Container(
-  padding: MediaQuery.of(context).viewInsets,
-
-child:
-
-        DraggableScrollableSheet(
+    return Container(
+        padding: MediaQuery.of(context).viewInsets,
+        child: DraggableScrollableSheet(
           expand: false,
           builder: (context, scrollController) {
             return Container(
               padding: EdgeInsets.all(
                 CommonSizes.Size_12_HGAP,
               ),
-              decoration:
-              Styles.gradientRoundedDecoration(
+              decoration: Styles.gradientRoundedDecoration(
                   radius: 20.r,
-                  alignmentGeometryBegin:
-                  Alignment(0, 0),
-                  alignmentGeometryEnd:
-                  Alignment(0, 1),
+                  alignmentGeometryBegin: Alignment(0, 0),
+                  alignmentGeometryEnd: Alignment(0, 1),
                   customBorder: BorderRadius.only(
                       topLeft: Radius.circular(20.r),
-                      topRight:
-                      Radius.circular(20.r)),
+                      topRight: Radius.circular(20.r)),
                   gradientColor: [
                     Styles.colorBackgroundGradientStart,
                     Styles.colorBackgroundGradientEnd
                   ],
                   boxShadow: [
                     BoxShadow(
-                      color: Styles.colorShadow
-                          .withOpacity(0.1),
+                      color: Styles.colorShadow.withOpacity(0.1),
                       spreadRadius: 0,
                       offset: Offset(0, 2),
                       blurRadius: 9,
                     ),
                   ]),
               child: Column(
-                mainAxisAlignment:
-                MainAxisAlignment.start,
-                crossAxisAlignment:
-                CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     width: 40.w,
                     height: 5.h,
-                    decoration:
-                    Styles.coloredRoundedDecoration(
+                    decoration: Styles.coloredRoundedDecoration(
                       radius: 48.r,
                       color: Styles.colorBackgroundAppBar,
                     ),
@@ -142,80 +124,83 @@ child:
                     text: 'Comments',
                     textAlign: TextAlign.center,
                     alignmentGeometry: Alignment.center,
-                    style: Styles.w600TextStyle()
-                        .copyWith(
-                        fontSize: 18.sp,
-                        color: Styles.colorTextWhite),
+                    style: Styles.w600TextStyle().copyWith(
+                        fontSize: 18.sp, color: Styles.colorTextWhite),
                   ),
-Expanded(child:
-                  BlocConsumer<CommentBloc, CommentState>(
-                      bloc: sl<CommentBloc>(),
-                      listener: (context, CommentState state) async {
-                        if (state is GetAllCommentLoadedState) {
-                          sl<NetworkInfo>().connectivityNotifier.value =
-                              ConnectivityResult.mobile;
-
-                          _refreshController.loadComplete();
-                          _refreshController.refreshCompleted();
-                          if ((state.total ?? 0) > 0) {
-                            if (getAllCommentLoadedState == null) {
-                              getAllCommentLoadedState = state;
-                            } else if (_currentSection == 1) {
-                              getAllCommentLoadedState = state;
-                            } else if (_currentSection > 1) {
-                              getAllCommentLoadedState!.comments!
-                                  .addAll(state.comments ?? []);
-                            }
-                          } else {
-                            _enablePullUp = true;
-                          }
-                          if (state.total! <= ((_currentSection) * Pagelimit)) {
-                            _enablePullUp = false;
-                          }
-                        } else if (state is CommentError) {
-                          HelperFunction.showToast(state.message.toString());
-                          if (state.message
-                              .toString()
-                              .compareTo(StringLbl.noInternetConnection) ==
-                              0) {
+                  Expanded(
+                    child: BlocConsumer<CommentBloc, CommentState>(
+                        bloc: sl<CommentBloc>(),
+                        listener: (context, CommentState state) async {
+                          if (state is GetAllCommentLoadedState) {
                             sl<NetworkInfo>().connectivityNotifier.value =
-                                ConnectivityResult.none;
-                            final commentBox = await sl<HiveParamter>()
-                                .hive
-                                .box(HiveKeys.commentBox);
-                            GetAllCommentEntity getAllCommentEntity = (commentBox
-                                .get(HiveKeys.commentListKey) as GetAllCommentModel)
-                                .toEntity();
+                                ConnectivityResult.mobile;
 
-                            if(getAllCommentEntity.comments!=null) {
-                              if (widget.postID ==
-                                  getAllCommentEntity.comments!.first.postId){
-                                getAllCommentLoadedState=  GetAllCommentLoadedState(
-                                    comments: getAllCommentEntity.comments,limit: getAllCommentEntity.limit,total: getAllCommentEntity.total,skip: getAllCommentEntity.skip);
-
+                            _refreshController.loadComplete();
+                            _refreshController.refreshCompleted();
+                            if ((state.total ?? 0) > 0) {
+                              if (getAllCommentLoadedState == null) {
+                                getAllCommentLoadedState = state;
+                              } else if (_currentSection == 1) {
+                                getAllCommentLoadedState = state;
+                              } else if (_currentSection > 1) {
+                                getAllCommentLoadedState!.comments!
+                                    .addAll(state.comments ?? []);
                               }
+                            } else {
+                              _enablePullUp = true;
                             }
+                            if (state.total! <=
+                                ((_currentSection) * Pagelimit)) {
+                              _enablePullUp = false;
+                            }
+                          } else if (state is CommentError) {
+                            HelperFunction.showToast(state.message.toString());
+                            if (state.message.toString().compareTo(
+                                    StringLbl.noInternetConnection) ==
+                                0) {
+                              sl<NetworkInfo>().connectivityNotifier.value =
+                                  ConnectivityResult.none;
+                              final commentBox = await sl<HiveParamter>()
+                                  .hive
+                                  .box(HiveKeys.commentBox);
+                              GetAllCommentEntity getAllCommentEntity =
+                                  (commentBox.get(HiveKeys.commentListKey)
+                                          as GetAllCommentModel)
+                                      .toEntity();
 
-                            _currentSection = 1;
-                            _enablePullUp = false;
+                              if (getAllCommentEntity.comments != null) {
+                                if (widget.postID ==
+                                    getAllCommentEntity
+                                        .comments!.first.postId) {
+                                  getAllCommentLoadedState =
+                                      GetAllCommentLoadedState(
+                                          comments:
+                                              getAllCommentEntity.comments,
+                                          limit: getAllCommentEntity.limit,
+                                          total: getAllCommentEntity.total,
+                                          skip: getAllCommentEntity.skip);
+                                }
+                              }
+
+                              _currentSection = 1;
+                              _enablePullUp = false;
+                            }
                           }
-                        }
-                      },
-                      builder: (context, state) {
-                        if (state is CommentLoading && _currentSection == 1)
-                          return WaitingWidget();
-                        if (state is CommentError && getAllCommentLoadedState == null)
-                          return ErrorWidgetScreen(
-                            callBack: () {
-                              _requestComment();
-                            },
-                            message: state.message,
-                            height: 250.h,
-                            width: 250.w,
-                          );
-                        return
-
-                          Scrollbar(
+                        },
+                        builder: (context, state) {
+                          if (state is CommentLoading && _currentSection == 1)
+                            return WaitingWidget();
+                          if (state is CommentError &&
+                              getAllCommentLoadedState == null)
+                            return ErrorWidgetScreen(
+                              callBack: () {
+                                _requestComment();
+                              },
+                              message: state.message,
+                              height: 250.h,
+                              width: 250.w,
+                            );
+                          return Scrollbar(
                               interactive: true,
                               radius: const Radius.circular(10),
                               child: SmartRefresher(
@@ -234,96 +219,98 @@ Expanded(child:
                                   },
                                   child: getAllCommentLoadedState == null
                                       ? EmptyStateWidget(
-                                    text: 'no data found add some task',
-                                  )
+                                          text: StringLbl.noDataFound,
+                                        )
                                       : ListView.separated(
-                                    shrinkWrap: true,
-
-                                    itemCount: getAllCommentLoadedState!.comments!.length,
-                                    itemBuilder: (BuildContext context, index) {
-                                      return Padding(
-                                          padding: EdgeInsets.only(
-                                              bottom:
-                                              MediaQuery.of(context).viewInsets.bottom),
-                                          child:
-
-
-
-                                          CommentWidget(
-                                            userName: getAllCommentLoadedState!.comments![index]!.user!.username??'',
-                                            text:  getAllCommentLoadedState!.comments![index]!.body??'',
-                                            dateTime: '2 hours ago',
-                                            replies: [
-                                              CommentWidget(
-                                                userName: getAllCommentLoadedState!.comments![index]!.user!.username??'',
-                                                text:  getAllCommentLoadedState!.comments![index]!.body??'',
-                                                dateTime: '1 hour ago',
-                                                isReply: true,
+                                          shrinkWrap: true,
+                                          itemCount: getAllCommentLoadedState!
+                                              .comments!.length,
+                                          itemBuilder:
+                                              (BuildContext context, index) {
+                                            return Padding(
+                                              padding: EdgeInsets.only(
+                                                  bottom: MediaQuery.of(context)
+                                                      .viewInsets
+                                                      .bottom),
+                                              child: CommentWidget(
+                                                userName:
+                                                    getAllCommentLoadedState!
+                                                            .comments![index]!
+                                                            .user!
+                                                            .username ??
+                                                        '',
+                                                text: getAllCommentLoadedState!
+                                                        .comments![index]!
+                                                        .body ??
+                                                    '',
+                                                dateTime: '2 hours ago',
+                                                replies: [
+                                                  CommentWidget(
+                                                    userName:
+                                                        getAllCommentLoadedState!
+                                                                .comments![
+                                                                    index]!
+                                                                .user!
+                                                                .username ??
+                                                            '',
+                                                    text:
+                                                        getAllCommentLoadedState!
+                                                                .comments![
+                                                                    index]!
+                                                                .body ??
+                                                            '',
+                                                    dateTime: '1 hour ago',
+                                                    isReply: true,
+                                                  ),
+                                                ],
                                               ),
-
-                                            ],
-                                          ),
-                                        //   ),
-                                        // ),
-                                      );
-                                    },
-                                    separatorBuilder: (BuildContext context, int index) =>
-                                    CommonSizes.vSmallerSpace,
-
-                                  )));
-                      }),
-),
-
-                  BlocConsumer<CommentBloc,
-                      CommentState>(
+                                              //   ),
+                                              // ),
+                                            );
+                                          },
+                                          separatorBuilder:
+                                              (BuildContext context,
+                                                      int index) =>
+                                                  CommonSizes.vSmallerSpace,
+                                        )));
+                        }),
+                  ),
+                  BlocConsumer<CommentBloc, CommentState>(
                       bloc: sl<CommentBloc>(),
-                      listener: (context,
-                          CommentState state) {
-                        if (state
-                        is AddNewCommentState) {
+                      listener: (context, CommentState state) {
+                        if (state is AddNewCommentState) {
                           HelperFunction.showToast('comment Added');
-                          Navigator.pop<bool>(
-                              context, true);
-                        } else if (state
-                        is CommentError) {
-                          HelperFunction.showToast(
-                              state.message);
+                          Navigator.pop<bool>(context, true);
+                        } else if (state is CommentError) {
+                          HelperFunction.showToast(state.message);
 
-                          Navigator.pop<bool>(
-                              context, false);
+                          Navigator.pop<bool>(context, false);
                         }
                       },
                       builder: (context, state) {
                         if (state is CommentLoading)
-                          return WaitingWidget(isSend: true,);
+                          return WaitingWidget(
+                            isSend: true,
+                          );
                         if (state is CommentError)
                           return ErrorWidgetScreen(
                             callBack: () {
-                              if (!Validators
-                                  .isNotEmptyString(
-                                  _commentController
-                                      .text)) {
+                              if (!Validators.isNotEmptyString(
+                                  _commentController.text)) {
                                 HelperFunction.showToast(
-                                    '${StringLbl.validationMessage} ${StringLbl.todo} ');
+                                    '${StringLbl.validationMessage} ${StringLbl.input} ');
                               } else {
-                                HelperFunction.showToast(
-                                    "all validated");
+                                HelperFunction.showToast("all validated");
 
-                                sl<CommentBloc>().add(
-                                    AddNewCommentEvent(
-                                      addCommentParams: AddCommentParams(
-                                          body: AddCommentParamsBody(
-                                              postId: widget.postID,
-                                              todo:
-                                              _commentController
-                                                  .text,
-                                              completed:
-                                              true,
-                                              userId:
-                                              sl<AppStateModel>()
-                                                  .user!
-                                                  .id)),
-                                    ));
+                                sl<CommentBloc>().add(AddNewCommentEvent(
+                                  addCommentParams: AddCommentParams(
+                                      body: AddCommentParamsBody(
+                                          postId: widget.postID,
+                                          todo: _commentController.text,
+                                          completed: true,
+                                          userId:
+                                              sl<AppStateModel>().user!.id)),
+                                ));
                               }
                             },
                             message: state.message,
@@ -331,86 +318,73 @@ Expanded(child:
                             width: 250.w,
                           );
 
-                        return     Row(children: [
-                    Expanded(
-                        child: CustomTextField(
-                          height: 56.h,
-                          // width: 217.w,
-                          justLatinLetters: true,
-                          // textKey: _usernameFocusNodesernameKey,
-                          controller: _commentController,
-                          textInputAction:
-                          TextInputAction.next,
-                          keyboardType: TextInputType.text,
-                          validator: (value) {
-                            if (Validators.isNotEmptyString(
-                                value ?? '')) {
-                              return null;
-                            }
-                            setState(() {});
-                            return "${StringLbl.validationMessage} ${StringLbl.userName}";
-                          },
-                          textStyle: Styles.w400TextStyle()
-                              .copyWith(
-                              fontSize: 16.sp,
-                              color: Styles
-                                  .colorTextTextField),
-                          textAlign: TextAlign.left,
-                          // focusNode: _usernameFocusNode,
-                          hintText: "Add a comment...",
-                          minLines: 1,
-                          onChanged: (String value) {
-                            // if (_usernameKey.currentState!.validate()) {}
-                            setState(() {});
-                          },
-                          maxLines: 1,
-                          onFieldSubmitted: (String value) {},
-                        )),
- InkWell(
+                        return Row(children: [
+                          Expanded(
+                              child: CustomTextField(
+                            height: 56.h,
+                            // width: 217.w,
+                            justLatinLetters: true,
+                            textKey: _commentKey,
+                            controller: _commentController,
+                            focusNode: _commentFocusNode,
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              if (Validators.isNotEmptyString(value ?? '')) {
+                                return null;
+                              }
+                              setState(() {});
+                              return "${StringLbl.validationMessage} ${StringLbl.userName}";
+                            },
+                            textStyle: Styles.w400TextStyle().copyWith(
+                                fontSize: 16.sp,
+                                color: Styles.colorTextTextField),
+                            textAlign: TextAlign.left,
+                            // focusNode: _usernameFocusNode,
+                            hintText: "Add a comment...",
+                            minLines: 1,
+                             onChanged: (String value) {
+                              if (_commentKey.currentState!.validate()) {}
+                              setState(() {});
+                            },
+                            maxLines: 1,
+                            onFieldSubmitted: (String value) {},
+                          )),
+                          InkWell(
                             child: IconButton(
                                 icon: Icon(Icons.send,
-                                    color: Styles
-                                        .colorTextWhite),
+                                    color: Styles.colorTextWhite),
                                 onPressed: () async {
-                                  FocusManager.instance
-                                      .primaryFocus
-                                      ?.unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
 
-                                  if (!Validators
-                                      .isNotEmptyString(
-                                      _commentController
-                                          .text)) {
+                                  if (!Validators.isNotEmptyString(
+                                      _commentController.text)) {
                                     HelperFunction.showToast(
-                                        '${StringLbl.validationMessage} ${StringLbl.todo} ');
+                                        '${StringLbl.validationMessage} ${StringLbl.input} ');
                                   } else {
-                                    HelperFunction.showToast(
-                                        "all validated");
+                                    HelperFunction.showToast("all validated");
 
-                                    sl<CommentBloc>().add(
-                                        AddNewCommentEvent(
-                                          addCommentParams: AddCommentParams(
-                                              body: AddCommentParamsBody(
-                                                  postId:widget.postID,
-                                                  todo: _commentController
-                                                      .text,
-                                                  completed:
-                                                  true,
-                                                  userId: sl<
-                                                      AppStateModel>()
-                                                      .user!
-                                                      .id)),
-                                        ));
+                                    sl<CommentBloc>().add(AddNewCommentEvent(
+                                      addCommentParams: AddCommentParams(
+                                          body: AddCommentParamsBody(
+                                              postId: widget.postID,
+                                              todo: _commentController.text,
+                                              completed: true,
+                                              userId: sl<AppStateModel>()
+                                                  .user!
+                                                  .id)),
+                                    ));
                                   }
                                 }),
-                          )]);
-                        })
-                  ,
+                          )
+                        ]);
+                      }),
                   CommonSizes.vSmallestSpace
                 ],
               ),
             );
           },
-        ) );
+        ));
   }
 }
 

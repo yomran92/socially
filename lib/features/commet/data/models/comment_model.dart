@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 
 import '../../../account/data/remote/models/responses/user_model.dart';
 import '../../domain/entities/get_comment_entity.dart';
+
 part 'comment_model.g.dart';
 
 @HiveType(typeId: 6)
@@ -18,10 +19,10 @@ class CommentModel {
   int? userId;
 
   @HiveField(5)
-
   UserModel? user;
 
-  CommentModel({this.id, this.body, this.postId, this.likes,this.userId,this.user});
+  CommentModel(
+      {this.id, this.body, this.postId, this.likes, this.userId, this.user});
 
   CommentModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -29,7 +30,6 @@ class CommentModel {
     postId = json['postId'];
     likes = json['likes'];
     user = json['user'] != null ? new UserModel.fromJson(json['user']) : null;
-
   }
 
   Map<String, dynamic> toJson() {
@@ -47,10 +47,11 @@ class CommentModel {
   @override
   GetCommentEntity toEntity() {
     return GetCommentEntity(
-      id: id,
-      body: body,
-      likes: likes,postId: postId,user: user,
-    userId: userId
-    );
+        id: id,
+        body: body,
+        likes: likes,
+        postId: postId,
+        user: user,
+        userId: userId);
   }
 }

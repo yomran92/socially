@@ -9,7 +9,7 @@ class StringLbl {
   static String validationMessage = 'not valid';
   static String userName = 'user name';
   static String password = 'password';
-  static String todo = 'todo : ';
+  static String input = 'input  ';
   static String isCompleted = 'is completed : ';
   static String save = 'Save';
   static String add = 'Add';
@@ -18,7 +18,7 @@ class StringLbl {
   static String noDataFound = 'no data found ';
   static String numOfdago = '2 d ago ';
   static String mediatiobn = 'Mediatiobn ';
-  static String textEx = """Stopped by @zoesugg today with goosey girl to see @kyliecosmetics & @kylieskin 💕 wow what a dream!!!!!!!!
+  static String textEx =
+      """Stopped by @zoesugg today with goosey girl to see @kyliecosmetics & @kylieskin 💕 wow what a dream!!!!!!!!
                    It’s the best experience we have!""";
-
 }

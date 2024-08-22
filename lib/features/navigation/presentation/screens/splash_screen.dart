@@ -1,7 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:socially/core/widget/waiting_widget.dart';
 
 import '../../../../core/routing/route_paths.dart';
 import '../../../../core/state/appstate.dart';

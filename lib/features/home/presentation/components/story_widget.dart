@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:socially/core/assets_path.dart';
 import 'package:socially/core/styles.dart';
 import 'package:socially/core/widget/custom_svg_picture.dart';
 import 'package:socially/core/widget/waiting_widget.dart';
@@ -126,21 +125,26 @@ class _StoryWidgetState extends State<StoryWidget> {
                           final storyBox = await sl<HiveParamter>()
                               .hive
                               .box(HiveKeys.storyBox);
-                           GetAllStoryEntity getAllStoryEntity = (storyBox
-                              .get(HiveKeys.storyListKey) as GetAllStoryModel)
-                              .toEntity();
+                          GetAllStoryEntity getAllStoryEntity =
+                              (storyBox.get(HiveKeys.storyListKey)
+                                      as GetAllStoryModel)
+                                  .toEntity();
 
-                          getAllStoryLoadedState=  GetAllStoryLoadedState(
-                            storys: getAllStoryEntity.storys,limit: getAllStoryEntity.limit,total: getAllStoryEntity.total,skip: getAllStoryEntity.skip);
+                          getAllStoryLoadedState = GetAllStoryLoadedState(
+                              storys: getAllStoryEntity.storys,
+                              limit: getAllStoryEntity.limit,
+                              total: getAllStoryEntity.total,
+                              skip: getAllStoryEntity.skip);
                           _currentSection = 1;
                           _enablePullUp = false;
                         }
                       }
                     },
                     builder: (context, state) {
-
                       if (state is StoryLoading && _currentSection == 1)
-                        return WaitingWidget(isStory: true,);
+                        return WaitingWidget(
+                          isStory: true,
+                        );
                       if (state is StoryError && getAllStoryLoadedState == null)
                         return ErrorWidgetScreen(
                           callBack: () {
@@ -175,13 +179,12 @@ class _StoryWidgetState extends State<StoryWidget> {
                                       padding: EdgeInsets.only(left: 8.h),
                                       scrollDirection: Axis.horizontal,
                                       shrinkWrap: true,
-                                      itemCount:
-                                          getAllStoryLoadedState!.storys!.length,
+                                      itemCount: getAllStoryLoadedState!
+                                          .storys!.length,
                                       itemBuilder:
                                           (BuildContext context, index) {
                                         return GestureDetector(
                                             onTap: () {
-
                                               PersistentNavBarNavigator
                                                   .pushNewScreenWithRouteSettings(
                                                 context,
@@ -190,8 +193,9 @@ class _StoryWidgetState extends State<StoryWidget> {
                                                       RoutePaths.stroyViewPage,
                                                 ),
                                                 screen: StoryViewer(
-                                                    story: getAllStoryLoadedState!
-                                                        .storys![index],),
+                                                  story: getAllStoryLoadedState!
+                                                      .storys![index],
+                                                ),
                                                 withNavBar: false,
                                                 pageTransitionAnimation:
                                                     PageTransitionAnimation
@@ -199,9 +203,12 @@ class _StoryWidgetState extends State<StoryWidget> {
                                               );
                                             },
                                             child: CustomPicture(
-                                                path: getAllStoryLoadedState!.storys?[index].image??'',
+                                                path: getAllStoryLoadedState!
+                                                        .storys?[index].image ??
+                                                    '',
                                                 height: 56.h,
-                                                borderColor:Styles.colorTextWhite,
+                                                borderColor:
+                                                    Styles.colorTextWhite,
                                                 isCircleShape: true,
                                                 isSVG: false,
                                                 withBorder: true,
@@ -211,9 +218,7 @@ class _StoryWidgetState extends State<StoryWidget> {
                                           CommonSizes.hSmallerSpace,
                                     )));
                       return Container();
-                    })
-
-                 )));
+                    }))));
   }
 
   _requestStory() async {

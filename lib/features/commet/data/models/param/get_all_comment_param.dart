@@ -1,7 +1,5 @@
 import '../../../../../core/constants.dart';
 import '../../../../../core/params/params_model.dart';
-import '../../../../../core/state/appstate.dart';
-import '../../../../../service_locator.dart';
 
 class GetAllCommentParams extends ParamsModel<GetAllCommentParamsBody> {
   @override
@@ -35,5 +33,6 @@ class GetAllCommentParamsBody extends BaseBodyModel {
     return {};
   }
 
-  GetAllCommentParamsBody({required this.skip, required this.limit,required this.postId});
+  GetAllCommentParamsBody(
+      {required this.skip, required this.limit, required this.postId});
 }

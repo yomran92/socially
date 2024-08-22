@@ -3,6 +3,7 @@ import 'package:socially/features/home/data/models/story_model.dart';
 
 import '../../domain/entities/get_all_story_entity.dart';
 import '../../domain/entities/get_story_entity.dart';
+
 part 'get_all_story_model.g.dart';
 
 @HiveType(typeId: 1)

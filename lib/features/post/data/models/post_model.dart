@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 import 'package:socially/features/post/data/models/reation_model.dart';
 
 import '../../domain/entities/get_post_entity.dart';
+
 part 'post_model.g.dart';
 
 @HiveType(typeId: 4)
@@ -15,13 +16,20 @@ class PostModel {
   @HiveField(3)
   int? userId;
   @HiveField(4)
-   List<String>? tags;
+  List<String>? tags;
   @HiveField(5)
   ReactionsModel? reactions;
   @HiveField(6)
   int? views;
 
-  PostModel({this.id, this.title, this.body, this.userId,this.reactions,this.tags,this.views});
+  PostModel(
+      {this.id,
+      this.title,
+      this.body,
+      this.userId,
+      this.reactions,
+      this.tags,
+      this.views});
 
   PostModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -55,11 +63,10 @@ class PostModel {
       id: id,
       title: title,
       reactions: reactions,
-      tags: tags,views: views,
-
+      tags: tags,
+      views: views,
       body: body,
       userId: userId,
     );
   }
 }
-

@@ -37,10 +37,10 @@ class _StoryViewerState extends State<StoryViewer> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-          bottom: false,
-         left: false,
-         right: false,
-         child: Scaffold(
+        bottom: false,
+        left: false,
+        right: false,
+        child: Scaffold(
           body: Container(
             decoration: Styles.gradientRoundedDecoration(
               radius: 0.r,
@@ -61,15 +61,11 @@ class _StoryViewerState extends State<StoryViewer> {
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    child:
-                CustomPicture(
-
-                      path:  widget.story.image??'',
-
-                  isSVG: false,
-                  fit: BoxFit.fill,
-
-                )),
+                    child: CustomPicture(
+                      path: widget.story.image ?? '',
+                      isSVG: false,
+                      fit: BoxFit.fill,
+                    )),
                 Positioned(
                   top: 0,
                   left: 0,
@@ -90,35 +86,36 @@ class _StoryViewerState extends State<StoryViewer> {
                   right: CommonSizes.Size_20_HGAP,
                   child: Row(
                     children: [
-                     InkWell(onTap: (){
-                       Utils.popNavigate(context);
-                     },child:   Container(
-                        width: 52.h,
-                        height: 52.h,
-                        decoration: Styles.coloredRoundedDecoration(
-                            radius: 10.r,
-                            color: Styles.colorBackgroundContanier,
-                            borderColor: Styles.colorBackgroundContanier),
-                        child: Container(
-                          width: 23.h,
-                          height: 23.h,
-                          child: Icon(
-                            Icons.arrow_back_ios_new_outlined,
-                            color: Styles.colorBackArrowIcon,
-                          ),
-                        ),
-                      )
-                     ),
+                      InkWell(
+                          onTap: () {
+                            Utils.popNavigate(context);
+                          },
+                          child: Container(
+                            width: 52.h,
+                            height: 52.h,
+                            decoration: Styles.coloredRoundedDecoration(
+                                radius: 10.r,
+                                color: Styles.colorBackgroundContanier,
+                                borderColor: Styles.colorBackgroundContanier),
+                            child: Container(
+                              width: 23.h,
+                              height: 23.h,
+                              child: Icon(
+                                Icons.arrow_back_ios_new_outlined,
+                                color: Styles.colorBackArrowIcon,
+                              ),
+                            ),
+                          )),
                       CommonSizes.hSmallestSpace,
                       CustomRichText(
                         text: [
                           new TextSpan(
-                              text: widget.story.name??'',
+                              text: widget.story.name ?? '',
                               style: Styles.w600TextStyle().copyWith(
                                   color: Styles.colorTextWhite,
                                   fontSize: 20.sp)),
                           new TextSpan(
-                              text: StringLbl.numOfdago,
+                              text: "   "+StringLbl.numOfdago,
                               style: Styles.w600TextStyle().copyWith(
                                   color: Styles.colorTextWhite,
                                   fontSize: 16.sp)),
@@ -126,7 +123,7 @@ class _StoryViewerState extends State<StoryViewer> {
                       ),
                       Spacer(),
                       CustomPicture(
-                        path: widget.story.image??'',
+                        path: widget.story.image ?? '',
                         isSVG: false,
                         width: 23.h,
                         height: 23.h,
@@ -147,7 +144,7 @@ class _StoryViewerState extends State<StoryViewer> {
                 ),
                 Positioned(
                   height: 44.h,
-                   right: 150.h,
+                  right: 150.h,
                   bottom: 100.h,
                   child: Container(
                     decoration: Styles.coloredRoundedDecoration(

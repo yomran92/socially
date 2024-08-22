@@ -9,7 +9,8 @@ import '../../domain/repositories/comment_repository.dart';
 import '../../domain/usecases/add_new_comment_usecase.dart';
 import '../../domain/usecases/get_all_comment_usecase.dart';
 
-part 'comment_event.dart';part 'comment_state.dart';
+part 'comment_event.dart';
+part 'comment_state.dart';
 
 const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
 

@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:socially/core/assets_path.dart';
 
-import '../constants.dart';
-
 class CustomPicture extends StatelessWidget {
   const CustomPicture(
       {required this.path,
@@ -15,7 +13,7 @@ class CustomPicture extends StatelessWidget {
       this.isSVG = false,
       this.withBorder = false,
       this.isCircleShape = false,
-      this.borderColor ,
+      this.borderColor,
       this.fit = BoxFit.scaleDown,
       Key? key})
       : super(key: key);
@@ -34,10 +32,9 @@ class CustomPicture extends StatelessWidget {
   Widget build(BuildContext context) {
     final double aspectRatio;
     if (width == null || height == null) {
-      aspectRatio =  ScreenUtil().screenWidth /ScreenUtil().screenHeight;
+      aspectRatio = ScreenUtil().screenWidth / ScreenUtil().screenHeight;
     } else {
-     aspectRatio = width! / height!;
-
+      aspectRatio = width! / height!;
     }
 
     return !path.contains('http')
@@ -65,7 +62,9 @@ class CustomPicture extends StatelessWidget {
                                   ? BoxDecoration(
                                       borderRadius: BorderRadius.circular(48.r),
                                       border: Border.all(
-                                          color: borderColor??Colors.blueAccent, width: 2))
+                                          color:
+                                              borderColor ?? Colors.blueAccent,
+                                          width: 2))
                                   : null,
                               child: ClipRRect(
                                   borderRadius: isCircleShape
@@ -99,49 +98,48 @@ class CustomPicture extends StatelessWidget {
                       height: height,
                       child: isSVG
                           ? SvgPicture.network(
-                               path,
+                              path,
                               fit: fit,
                               width: width,
                               height: height,
                               color: color,
                             )
-                          :
-
-                      Container(   decoration: withBorder
-                          ? BoxDecoration(
-                          borderRadius: BorderRadius.circular(48.r),
-                          border: Border.all(
-                              color: borderColor??Colors.blueAccent, width: 2))
-                          : null,child:
-                      ClipRRect(
-                              borderRadius: isCircleShape
-                                  ? BorderRadius.circular(width ?? 0)
-                                  : BorderRadius.circular(14.r),
-                              child:   CachedNetworkImage(
-                                  width: width,
-                                  height: height,
-                                  imageUrl:   path,
-                                  imageBuilder: (context, imageProvider) =>
-
-
-                                      Container(      height: double.infinity,
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: imageProvider,
-
-                                              fit: BoxFit.cover,
-
-                                              colorFilter: ColorFilter.mode(
-                                                  Colors.red,
-                                                  BlendMode.colorBurn)),
+                          : Container(
+                              decoration: withBorder
+                                  ? BoxDecoration(
+                                      borderRadius: BorderRadius.circular(48.r),
+                                      border: Border.all(
+                                          color:
+                                              borderColor ?? Colors.blueAccent,
+                                          width: 2))
+                                  : null,
+                              child: ClipRRect(
+                                borderRadius: isCircleShape
+                                    ? BorderRadius.circular(width ?? 0)
+                                    : BorderRadius.circular(14.r),
+                                child: CachedNetworkImage(
+                                    width: width,
+                                    height: height,
+                                    imageUrl: path,
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                          height: double.infinity,
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: imageProvider,
+                                                fit: BoxFit.cover,
+                                                colorFilter: ColorFilter.mode(
+                                                    Colors.red,
+                                                    BlendMode.colorBurn)),
+                                          ),
                                         ),
-                                      ),
-                                  placeholder: (context, url) =>
-                                      CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) =>
-                                      Image.asset(AssetsPath.PNG_NoItemImage)),
-                              ) ),
-                    ) ));
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) =>
+                                        Image.asset(
+                                            AssetsPath.PNG_NoItemImage)),
+                              )),
+                    )));
   }
 }

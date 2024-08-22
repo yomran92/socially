@@ -7,7 +7,8 @@ import '../../../domain/entities/get_story_entity.dart';
 import '../../../domain/repositories/story_repository.dart';
 import '../../../domain/usecases/get_all_story_usecase.dart';
 
-part 'story_event.dart';part 'story_state.dart';
+part 'story_event.dart';
+part 'story_state.dart';
 
 const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
 

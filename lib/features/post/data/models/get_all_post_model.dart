@@ -4,7 +4,7 @@ import 'package:socially/features/post/data/models/post_model.dart';
 import '../../domain/entities/get_all_Post_entity.dart';
 import '../../domain/entities/get_post_entity.dart';
 
-  part 'get_all_post_model.g.dart';
+part 'get_all_post_model.g.dart';
 
 @HiveType(typeId: 3)
 class GetAllPostModel {

@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import '../../domain/entities/get_all_comment_entity.dart';
 import '../../domain/entities/get_comment_entity.dart';
 import 'comment_model.dart';
+
 part 'get_all_comment_model.g.dart';
 
 @HiveType(typeId: 7)

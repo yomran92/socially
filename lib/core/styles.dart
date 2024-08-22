@@ -175,7 +175,7 @@ class Styles {
               BorderRadius.all(
                 Radius.circular(radius),
               ),
-           gradient: LinearGradient(
+          gradient: LinearGradient(
             colors: gradientColor ?? [colorGradientStart, colorGradientEnd],
             begin: alignmentGeometryBegin ?? Alignment(0.5, 1),
             end: alignmentGeometryEnd ?? Alignment(0.5, 1),

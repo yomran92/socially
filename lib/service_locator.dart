@@ -43,10 +43,10 @@ Future<void> init() async {
     hive.init(directory.path);
     hive.registerAdapter<UserModel>(UserModelAdapter());
     hive.registerAdapter<PostModel>(PostModelAdapter());
-    hive.registerAdapter<CommentModel >(CommentModelAdapter());
+    hive.registerAdapter<CommentModel>(CommentModelAdapter());
     hive.registerAdapter<StoryModel>(StoryModelAdapter());
     hive.registerAdapter<GetAllPostModel>(GetAllPostModelAdapter());
-    hive.registerAdapter<GetAllCommentModel >(GetAllCommentModelAdapter());
+    hive.registerAdapter<GetAllCommentModel>(GetAllCommentModelAdapter());
     hive.registerAdapter<GetAllStoryModel>(GetAllStoryModelAdapter());
 
     return hive;

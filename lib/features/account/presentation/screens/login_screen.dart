@@ -55,12 +55,11 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-       child: Scaffold(
+      child: Scaffold(
         // backgroundColor: Colors.transparent,
         body: Container(
             decoration: Styles.gradientRoundedDecoration(
               radius: 0.r,
-
               gradientColor: [
                 Styles.colorBackgroundGradientStart,
                 Styles.colorBackgroundGradientEnd

@@ -1,15 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class GetStoryEntity extends Equatable {
-
-
-
-   int? id;
-
+  int? id;
 
   String? name;
-   String? image;
-   bool? isSeen;
+  String? image;
+  bool? isSeen;
+
   GetStoryEntity({this.id, this.image, this.name, this.isSeen});
 
   @override

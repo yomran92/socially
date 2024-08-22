@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:socially/core/string_lbl.dart';
@@ -19,7 +18,7 @@ class ErrorWidgetScreen extends StatelessWidget {
       required this.callBack,
       this.width,
       this.height,
-      this.isHorizontal=false,
+      this.isHorizontal = false,
       Key? key})
       : super(key: key);
 
@@ -42,67 +41,60 @@ class ErrorWidgetScreen extends StatelessWidget {
                 ),
               ],
             ),
-            child:
+            child: (isHorizontal ?? false)
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: CustomButton(
+                          // height: (height ?? 25) * 0.2,
+                          text: StringLbl.reload,
+                          style: Styles.w500TextStyle().copyWith(
+                              color: Styles.colorTextWhite, fontSize: 20.sp),
+                          textAlign: TextAlign.center,
+                          color: Colors.transparent,
+                          fillColor: Colors.transparent,
 
-            (isHorizontal??false)?Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+                          alignmentDirectional: AlignmentDirectional.center,
+                          onPressed: callBack,
+                        ),
+                      ),
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Center(
+                          child: CustomText(
+                        text: message ?? "",
+                        style: Styles.w500TextStyle().copyWith(
+                          fontSize: 16.sp,
+                          color: Styles.colorTextError,
+                        ),
+                        textAlign: TextAlign.center,
+                        alignmentGeometry: Alignment.center,
+                      )),
 
-                Container(
-
-
-
-                  child: CustomButton(
-                    // height: (height ?? 25) * 0.2,
-                    text: StringLbl.reload  ,
-                    style: Styles.w500TextStyle().copyWith(
-                        color: Styles.colorTextWhite, fontSize: 20.sp),
-                    textAlign: TextAlign.center,
-                    color:  Colors.transparent,
-                    fillColor: Colors.transparent,
-
-                    alignmentDirectional: AlignmentDirectional.center,
-                    onPressed: callBack,
-                  ),
-                ),
-              ],
-            ):
-            Column(
-               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-
-                Center(
-                    child: CustomText(
-                  text: message ?? "",
-                  style: Styles.w500TextStyle().copyWith(
-                    fontSize: 16.sp,
-                    color: Styles.colorTextError,
-                  ),
-                  textAlign: TextAlign.center,
-                  alignmentGeometry: Alignment.center,
-                )),
-
-                Container(
-                   margin:
-                      EdgeInsets.symmetric(vertical: 20.w, horizontal: 20.w),
-
-                  child: CustomButton(
-                    height: (height ?? 25) * 0.2,
-                    text: StringLbl.reload,
-                    style: Styles.w500TextStyle().copyWith(
-                        color: Styles.colorTextWhite, fontSize: 20.sp),
-                    textAlign: TextAlign.center,
-                    color:  Colors.transparent,
-                    fillColor: Colors.transparent,
-                    alignmentDirectional: AlignmentDirectional.center,
-                    onPressed: callBack,
-                  ),
-                ),
-                // SizedBox(height: height*0.05,),
-              ],
-            )),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                            vertical: 20.w, horizontal: 20.w),
+                        child: CustomButton(
+                          height: (height ?? 25) * 0.2,
+                          text: StringLbl.reload,
+                          style: Styles.w500TextStyle().copyWith(
+                              color: Styles.colorTextWhite, fontSize: 20.sp),
+                          textAlign: TextAlign.center,
+                          color: Colors.transparent,
+                          fillColor: Colors.transparent,
+                          alignmentDirectional: AlignmentDirectional.center,
+                          onPressed: callBack,
+                        ),
+                      ),
+                      // SizedBox(height: height*0.05,),
+                    ],
+                  )),
       ),
     );
   }

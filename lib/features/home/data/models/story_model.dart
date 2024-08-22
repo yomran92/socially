@@ -9,9 +9,7 @@ class StoryModel {
   @HiveField(0)
   int? id;
   @HiveField(1)
-
-
-   String? name;
+  String? name;
   @HiveField(2)
   String? image;
   @HiveField(3)
@@ -21,7 +19,7 @@ class StoryModel {
 
   StoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['firstName'] ;
+    name = json['firstName'];
     image = json['image'];
     isSeen = false;
   }
