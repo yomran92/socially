@@ -199,60 +199,7 @@ class _NavMainScreenState extends State<NavMainScreen> {
     super.initState();
     _controller = PersistentTabController(initialIndex: 0);
 
-    // _controller = PersistentTabController(
-    //   initialIndex: managementNavController.value.index,
-    // );
-    // _controller.addListener(() {
-    //   final _patientsCurrentState = _patientsKey.currentState;
-    //   if (_controller.index != 3) {
-    //     if (_patientsCurrentState?.searchController.text.isNotEmpty ?? false) {
-    //       _patientsCurrentState?.searchController.clear();
-    //       _patientsCurrentState?.resetSearch();
-    //     }
-    //   }
-    //   if (_controller.index == 3) {
-    //     FocusManager.instance.primaryFocus?.unfocus();
-    //   }
-    //   if (mounted) {
-    //     setState(() {
-    //       navIndex = _controller.index;
-    //     });
-    //   }
-    // });
-    // _controller.addListener(() {
-    //   final _appointmentsCurrentState = _appointmentsKey.currentState;
-    //   if (_controller.index != 1) {
-    //     if (_appointmentsCurrentState?.searchController.text.isNotEmpty ??
-    //         false) {
-    //       _appointmentsCurrentState?.lastKeyword = '';
-    //       _appointmentsCurrentState?.searchController.clear();
-    //       _appointmentsCurrentState?.resetFilters();
-    //     }
-    //   }
-    //   if (_controller.index == 1) {
-    //     FocusManager.instance.primaryFocus?.unfocus();
-    //     if (sl<AppointmentRepository>().selectedAppointmentFilter.statusId ==
-    //             AppointmentStatus.upcoming.index ||
-    //         sl<AppointmentRepository>().selectedAppointmentFilter.statusId ==
-    //             null) {
-    //       _appointmentsCurrentState?.requestAppointments(
-    //         sl<AppointmentRepository>().selectedAppointmentFilter,
-    //       );
-    //     }
-    //   }
-    //   if (mounted) {
-    //     setState(() {
-    //       navIndex = _controller.index;
-    //     });
-    //   }
-    // });
-    // managementNavController.listen((value) {
-    //   if (value.index == _controller.index) {
-    //     return;
-    //   }
-    //   _controller.jumpToTab(value.index);
-    // });
-    _showNavBar = true;
+     _showNavBar = true;
   }
 
   @override

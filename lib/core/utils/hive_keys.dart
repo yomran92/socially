@@ -14,4 +14,4 @@ class HiveKeys {
 //Box
   static const String storyBox = "storyBox";
   static const String storyListKey = "storyListKey";
-}
+ }

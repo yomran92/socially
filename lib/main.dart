@@ -12,8 +12,9 @@ import 'core/utils/hive_paramter.dart';
 import 'service_locator.dart' as serviceLocator;
 
 Future<void> main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // WidgetsBinding widgetsBinding =
+  WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await serviceLocator.init();
   await sl<HiveParamter>().hive.openBox(HiveKeys.userBox);
   await sl<HiveParamter>().hive.openBox(HiveKeys.postBox);

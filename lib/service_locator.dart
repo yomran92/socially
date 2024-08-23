@@ -9,6 +9,7 @@ import 'package:socially/features/account/data/remote/data_sources/account_remot
 import 'package:socially/features/account/data/remote/models/responses/user_model.dart';
 import 'package:socially/features/account/data/repositories/account_repository.dart';
 import 'package:socially/features/commet/data/models/comment_model.dart';
+import 'package:socially/features/post/data/models/reation_model.dart';
 import 'package:socially/features/post/presentation/bloc/post_bloc.dart';
 
 import 'core/utils/network_info.dart';
@@ -48,6 +49,7 @@ Future<void> init() async {
     hive.registerAdapter<GetAllPostModel>(GetAllPostModelAdapter());
     hive.registerAdapter<GetAllCommentModel>(GetAllCommentModelAdapter());
     hive.registerAdapter<GetAllStoryModel>(GetAllStoryModelAdapter());
+    hive.registerAdapter<ReactionsModel>(ReactionsModelAdapter());
 
     return hive;
   });

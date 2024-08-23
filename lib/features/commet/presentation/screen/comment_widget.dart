@@ -153,7 +153,13 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                                 ((_currentSection) * Pagelimit)) {
                               _enablePullUp = false;
                             }
-                          } else if (state is CommentError) {
+                          }
+
+                          if (state is AddNewCommentState) {
+                            HelperFunction.showToast('comment Added');
+                            Navigator.pop<bool>(context, true);
+                          }
+                          else if (state is CommentError) {
                             HelperFunction.showToast(state.message.toString());
                             if (state.message.toString().compareTo(
                                     StringLbl.noInternetConnection) ==
@@ -185,6 +191,11 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                               _currentSection = 1;
                               _enablePullUp = false;
                             }
+
+                          }
+                          else if(state is AddCommentError){
+                            HelperFunction.showToast(state.message);
+
                           }
                         },
                         builder: (context, state) {
@@ -193,12 +204,34 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                           if (state is CommentError &&
                               getAllCommentLoadedState == null)
                             return ErrorWidgetScreen(
+                              isHorizontal: true,
                               callBack: () {
+
                                 _requestComment();
+
+
+
+if(state is AddCommentError){
+                                if (!Validators.isNotEmptyString(
+    _commentController.text)) {
+    HelperFunction.showToast(
+    '${StringLbl.validationMessage} ${StringLbl.input} ');
+    } else {
+    HelperFunction.showToast("all validated");
+
+    sl<CommentBloc>().add(AddNewCommentEvent(
+    addCommentParams: AddCommentParams(
+    body: AddCommentParamsBody(
+    postId: widget.postID,
+    todo: _commentController.text,
+    completed: true,
+    userId:
+    sl<AppStateModel>().user!.id)),
+    ));}}
                               },
                               message: state.message,
-                              height: 250.h,
-                              width: 250.w,
+                              // height: 250.h,
+                              // width: 250.w,
                             );
                           return Scrollbar(
                               interactive: true,
@@ -227,6 +260,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                                               .comments!.length,
                                           itemBuilder:
                                               (BuildContext context, index) {
+                                            try{
                                             return Padding(
                                               padding: EdgeInsets.only(
                                                   bottom: MediaQuery.of(context)
@@ -266,7 +300,9 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                                               ),
                                               //   ),
                                               // ),
-                                            );
+                                            );}catch(e){
+                                              return Container();
+                                            }
                                           },
                                           separatorBuilder:
                                               (BuildContext context,
@@ -275,50 +311,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                                         )));
                         }),
                   ),
-                  BlocConsumer<CommentBloc, CommentState>(
-                      bloc: sl<CommentBloc>(),
-                      listener: (context, CommentState state) {
-                        if (state is AddNewCommentState) {
-                          HelperFunction.showToast('comment Added');
-                          Navigator.pop<bool>(context, true);
-                        } else if (state is CommentError) {
-                          HelperFunction.showToast(state.message);
-
-                          Navigator.pop<bool>(context, false);
-                        }
-                      },
-                      builder: (context, state) {
-                        if (state is CommentLoading)
-                          return WaitingWidget(
-                            isSend: true,
-                          );
-                        if (state is CommentError)
-                          return ErrorWidgetScreen(
-                            callBack: () {
-                              if (!Validators.isNotEmptyString(
-                                  _commentController.text)) {
-                                HelperFunction.showToast(
-                                    '${StringLbl.validationMessage} ${StringLbl.input} ');
-                              } else {
-                                HelperFunction.showToast("all validated");
-
-                                sl<CommentBloc>().add(AddNewCommentEvent(
-                                  addCommentParams: AddCommentParams(
-                                      body: AddCommentParamsBody(
-                                          postId: widget.postID,
-                                          todo: _commentController.text,
-                                          completed: true,
-                                          userId:
-                                              sl<AppStateModel>().user!.id)),
-                                ));
-                              }
-                            },
-                            message: state.message,
-                            height: 250.h,
-                            width: 250.w,
-                          );
-
-                        return Row(children: [
+                   Row(children: [
                           Expanded(
                               child: CustomTextField(
                             height: 56.h,
@@ -377,8 +370,7 @@ class _CommentBottomSheetState extends State<CommentBottomSheet> {
                                   }
                                 }),
                           )
-                        ]);
-                      }),
+                        ]),
                   CommonSizes.vSmallestSpace
                 ],
               ),

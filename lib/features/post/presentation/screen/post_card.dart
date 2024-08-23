@@ -31,8 +31,7 @@ class PostCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-              height: 25.h,
-              width: 376.w,
+              height:ScreenUtil().orientation==Orientation.portrait?25.r:40.r,              width: 376.w,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,7 +86,7 @@ class PostCard extends StatelessWidget {
           ),
           CommonSizes.vSmallerSpace,
           Container(
-              height: 25.r,
+              height:ScreenUtil().orientation==Orientation.portrait?25.r:40.r,
               margin:
                   EdgeInsets.symmetric(horizontal: CommonSizes.Size_12_HGAP),
               child: Row(
@@ -112,8 +111,10 @@ class PostCard extends StatelessWidget {
                           context: context,
                           isScrollControlled: true,
                           useRootNavigator: true,
+
                           builder: (context) => CommentBottomSheet(
                             postID: postEntity!.id!,
+
                           ),
                         );
                       },

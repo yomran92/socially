@@ -38,7 +38,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
       var res = await AddNewCommentUsecase(sl<CommentRepository>())
           .call(event.addCommentParams);
       emit(res.fold(
-          (l) => CommentError(message: l.errorMessage ?? ''),
+          (l) => AddCommentError(message: l.errorMessage ?? ''),
           (r) => AddNewCommentState(GetCommentEntity(
                 id: r.id,
                 body: r.body,

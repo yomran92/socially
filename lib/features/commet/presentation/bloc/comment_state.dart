@@ -22,6 +22,14 @@ class CommentError extends CommentState {
   @override
   List<Object> get props => [];
 }
+class AddCommentError extends CommentState {
+  String message;
+
+  AddCommentError({required this.message});
+
+  @override
+  List<Object> get props => [];
+}
 
 class GetAllCommentLoadedState extends CommentState {
   final List<GetCommentEntity>? comments;

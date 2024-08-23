@@ -1,5 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
+import 'package:hive/hive.dart';
+import 'package:socially/core/state/appstate.dart';
 
 import '../../../../core/error/app_exceptions.dart';
 import '../../../../core/error/error_entity.dart';
@@ -26,8 +28,8 @@ class DefaultPostRepository implements PostRepository {
       bool isConnected = sl<NetworkInfo>().connectivityNotifier.value !=
           ConnectivityResult.none;
       final postData;
-      postData = await remoteDataSource!.getAllPost(params);
       final postBox = await sl<HiveParamter>().hive.box(HiveKeys.postBox);
+       postData = await remoteDataSource!.getAllPost(params);
 
       GetAllPostModel? getAllPostModelLocal = postBox.get(HiveKeys.postListKey);
       if (getAllPostModelLocal == null) {
@@ -38,9 +40,7 @@ class DefaultPostRepository implements PostRepository {
       getAllPostModelLocal.posts!.addAll(getAllPostModel.posts ?? []);
       getAllPostModelLocal.posts!.toSet().toList();
       postBox.put(HiveKeys.postListKey, postData);
-      GetAllPostEntity getAllPostEntity =
-      (postBox.get(HiveKeys.postListKey) as GetAllPostModel)
-          .toEntity();
+
       return Right(postData.toEntity());
     } on AppException catch (e) {
       return Left(ErrorEntity.fromException(e));

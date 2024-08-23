@@ -6,6 +6,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:socially/features/post/presentation/screen/post_card.dart';
 
 import '../../../../core/constants.dart';
+import '../../../../core/state/appstate.dart';
 import '../../../../core/string_lbl.dart';
 import '../../../../core/utils/common_sizes.dart';
 import '../../../../core/utils/helper_function.dart';
@@ -97,11 +98,12 @@ class _PostListWidgetState extends State<PostListWidget> {
 
 
 
+                final postBox =     await sl<HiveParamter>().hive.box(HiveKeys.postBox);
+                GetAllPostModel? getAllPostModelLocal
+                = postBox.get(HiveKeys.postListKey);
 
-                final postBox =
-                    await sl<HiveParamter>().hive.box(HiveKeys.postBox);
                 GetAllPostEntity getAllPostEntity =
-                    (postBox.get(HiveKeys.postListKey) as GetAllPostModel)
+                getAllPostModelLocal!
                         .toEntity();
                  getAllPostLoadedState = GetAllPostLoadedState(
                     post: getAllPostEntity.posts,
